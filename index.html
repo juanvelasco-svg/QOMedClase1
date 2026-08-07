@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPCH - Estructura Molecular y Propiedades | Química Orgánica</title>
+    <style>
+        :root {
+            --upch-gold: #D4AF37;
+            --upch-dark: #1a1a2e;
+            --upch-blue: #16213e;
+            --upch-light: #0f3460;
+            --accent: #e94560;
+            --text: #2c3e50;
+            --white: #ffffff;
+            --sand: #f4e9c1;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--upch-dark) 0%, var(--upch-blue) 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--upch-gold);
+        }
+
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .logo-upch { width: 120px; height: auto; background: var(--white); border-radius: 50%; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); color: var(--upch-gold); }
+        .subtitle { font-size: 1.2rem; opacity: 0.95; font-weight: 300; }
+
+        .nav-container { background: var(--upch-blue); padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px var(--shadow); }
+        .nav-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; max-width: 1400px; margin: 0 auto; }
+
+        .nav-btn {
+            background: var(--white); color: var(--upch-dark); border: none; padding: 0.8rem 1.5rem;
+            border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        .nav-btn:hover, .nav-btn.active { background: var(--upch-gold); color: var(--upch-dark); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212,175,55,0.4); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card {
+            background: var(--white); border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
+            box-shadow: 0 8px 24px var(--shadow); border-left: 6px solid var(--upch-gold); transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        h2 { color: var(--upch-blue); margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 3px solid var(--upch-gold); display: flex; align-items: center; gap: 0.8rem; font-size: 2rem; }
+        h3 { color: var(--upch-light); margin: 1.5rem 0 1rem; font-size: 1.5rem; }
+
+        .molecule-img { max-width: 100%; height: auto; border-radius: 12px; margin: 1rem 0; box-shadow: 0 4px 12px var(--shadow); }
+        .img-container { text-align: center; margin: 2rem 0; }
+
+        .calculator { background: linear-gradient(135deg, #fff9f5 0%, #fff0e8 100%); border: 3px solid var(--upch-gold); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+        .calc-title { color: var(--upch-blue); font-size: 1.6rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+        .calc-input-group { margin: 1rem 0; }
+        .calc-input-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--upch-dark); }
+        .calc-input-group input, .calc-input-group select { width: 100%; padding: 0.8rem; border: 2px solid var(--sand); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; }
+        .calc-input-group input:focus, .calc-input-group select:focus { outline: none; border-color: var(--upch-gold); }
+
+        .calc-button {
+            background: var(--upch-blue); color: var(--white); border: none; padding: 1rem 2rem; border-radius: 30px;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 12px var(--shadow);
+        }
+        .calc-button:hover { background: var(--upch-gold); color: var(--upch-dark); transform: translateY(-2px); }
+
+        .calc-result { background: var(--white); border-left: 5px solid var(--accent); padding: 1.5rem; margin-top: 1.5rem; border-radius: 8px; font-size: 1.2rem; display: none; }
+        .calc-result.show { display: block; animation: slideIn 0.5s ease; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px var(--shadow); }
+        th { background: linear-gradient(135deg, var(--upch-blue) 0%, var(--upch-light) 100%); color: var(--white); padding: 1.2rem; text-align: left; font-weight: 600; }
+        td { padding: 1rem 1.2rem; border-bottom: 1px solid #eee; transition: background 0.3s; }
+        tr:hover td { background: #f8fff0; }
+
+        .info-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left: 5px solid #2196f3; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .tip-box { background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%); border-left: 5px solid #ffc107; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .bio-box { background: linear-gradient(135deg, #d1ecf1 0%, #a8dadc 100%); border-left: 5px solid #17a2b8; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .pharma-box { background: linear-gradient(135deg, #f8d7da 0%, #f1aeb5 100%); border-left: 5px solid #dc3545; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .toxic-box { background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%); border-left: 5px solid #ff6b35; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .problem-box { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left: 5px solid #28a745; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+
+        details.solution { margin-top: 1rem; background: #f8f9fa; border: 2px solid var(--upch-light); border-radius: 10px; padding: 0.8rem 1.2rem; }
+        details.solution summary { cursor: pointer; font-weight: 700; color: var(--upch-light); }
+        details.solution[open] summary { margin-bottom: 0.8rem; border-bottom: 1px dashed var(--upch-light); padding-bottom: .4rem; }
+
+        .mnemonic-card { background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); border: 3px solid var(--accent); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; position: relative; overflow: hidden; }
+        .mnemonic-title { color: var(--accent); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.2rem; }
+
+        .glossary-term { background: var(--white); border: 2px solid var(--upch-gold); border-radius: 8px; padding: 1rem; margin: 0.8rem 0; cursor: pointer; transition: all 0.3s; }
+        .glossary-term:hover { background: #fff9e6; transform: translateX(5px); }
+        .glossary-definition { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--upch-gold); }
+        .glossary-definition.show { display: block; animation: fadeIn 0.3s ease; }
+
+        .error-card { background: linear-gradient(135deg, #ffe6e6 0%, #ffb3b3 100%); border-left: 5px solid #dc3545; padding: 1.5rem; margin: 1rem 0; border-radius: 0 12px 12px 0; }
+        .error-title { color: #dc3545; font-weight: 700; margin-bottom: 0.5rem; }
+        .correction { background: #d4edda; border-left: 3px solid #28a745; padding: 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; }
+
+        .quiz-container { background: linear-gradient(135deg, var(--upch-blue) 0%, var(--upch-light) 100%); color: var(--white); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+        .quiz-question { font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .quiz-option { background: var(--white); color: var(--text); border: 3px solid transparent; padding: 1.2rem; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
+        .quiz-option:hover { border-color: var(--upch-gold); transform: translateY(-3px); }
+        .quiz-option.correct { background: #4caf50; color: white; border-color: #2e7d32; }
+        .quiz-option.incorrect { background: #f44336; color: white; border-color: #c62828; }
+
+        .footer { background: var(--upch-dark); color: var(--white); text-align: center; padding: 2.5rem; margin-top: 3rem; border-top: 5px solid var(--upch-gold); }
+
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow); }
+        .table-responsive table { min-width: 600px; width: 100%; margin: 0; }
+
+        /* Tabs */
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tab { background: var(--sand); border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .tab.active { background: var(--upch-gold); color: var(--upch-dark); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+        /* ===== FLASHCARDS ===== */
+        .fc-stats { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+        .fc-stat { padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; color: #fff; font-size: 0.95rem; }
+        .fc-stat.good { background: #28a745; }
+        .fc-stat.bad { background: #dc3545; }
+        .fc-stat.pending { background: #6c757d; }
+        .fc-stat.total { background: var(--upch-light); }
+        .fc-progress { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; max-width: 720px; margin: 0 auto 1.5rem; }
+        .fc-progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--upch-gold), var(--accent)); transition: width 0.4s; }
+        .flashcard-scene { perspective: 1400px; max-width: 720px; height: 320px; margin: 0 auto 1.5rem; }
+        .flashcard { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .fc-face {
+            position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; overflow: auto; box-shadow: 0 8px 24px var(--shadow); font-size: 1.15rem;
+        }
+        .fc-front { background: linear-gradient(135deg, var(--upch-blue), var(--upch-light)); color: #fff; border: 3px solid var(--upch-gold); }
+        .fc-back { background: linear-gradient(135deg, #fff9e6, var(--sand)); color: var(--text); border: 3px solid var(--upch-gold); transform: rotateY(180deg); }
+        .fc-label { font-size: 0.85rem; letter-spacing: 2px; font-weight: 800; opacity: 0.8; margin-bottom: 1rem; }
+        .fc-hint { margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; font-style: italic; }
+        .fc-controls { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+        .fc-btn { border: none; padding: 0.9rem 2rem; border-radius: 30px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; color: #fff; }
+        .fc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .fc-btn.good { background: #28a745; }
+        .fc-btn.bad { background: #dc3545; }
+        .fc-btn:not(:disabled):hover { transform: translateY(-3px); }
+        .fc-link { background: none; border: none; color: #6c757d; text-decoration: underline; cursor: pointer; font-size: 0.85rem; margin-top: 1rem; }
+
+        /* ===== MAPA CONCEPTUAL ===== */
+        .map-container { overflow-x: auto; padding: 1rem 0; }
+        .map-tree, .map-tree ul { list-style: none; }
+        .map-tree ul { display: none; padding-left: 1.6rem; margin-top: 0.6rem; border-left: 3px solid var(--upch-gold); }
+        .map-tree li.open > ul { display: block; animation: fadeIn 0.4s ease; }
+        .map-tree li { margin: 0.4rem 0; }
+        .map-node { display: inline-block; background: var(--upch-blue); color: #fff; padding: 0.6rem 1.1rem; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .map-node:hover { background: var(--upch-gold); color: var(--upch-dark); transform: translateX(4px); }
+        .map-node.root { background: var(--accent); font-size: 1.15rem; }
+        .map-node.branch { background: var(--upch-light); }
+        .map-leaf { display: inline-block; background: var(--sand); color: var(--text); padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.95rem; border: 2px solid var(--upch-gold); }
+        li.has-children > .map-node::before { content: '▶ '; font-size: 0.8em; }
+        li.has-children.open > .map-node::before { content: '▼ '; font-size: 0.8em; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            .logo-container { flex-direction: column; gap: 1rem; }
+            .logo-upch { width: 80px; }
+            .container { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            .nav-buttons { gap: 0.5rem; }
+            .nav-btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+            .calc-input-group input, .calc-input-group select { font-size: 0.9rem; padding: 0.6rem; }
+            .calc-button { width: 100%; padding: 0.8rem; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; }
+            .tab { flex-shrink: 0; padding: 0.6rem 1rem; font-size: 0.9rem; }
+            .info-box, .tip-box, .bio-box, .pharma-box, .toxic-box, .error-card, .mnemonic-card, .glossary-term, .problem-box { padding: 1rem; font-size: 0.95rem; }
+            .flashcard-scene { height: 360px; }
+            .fc-face { font-size: 1rem; padding: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.4rem; }
+            .subtitle { font-size: 0.9rem; }
+            header { padding: 1rem; }
+            .card { padding: 1rem; }
+            .nav-btn { padding: 0.5rem 0.7rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo-upch.png" alt="Logo UPCH" class="logo-upch">
+            <div>
+                <h1>Universidad Peruana Cayetano Heredia</h1>
+                <p class="subtitle">Facultad de Medicina • Química Orgánica</p>
+                <p class="subtitle">Capítulo 1: Estructura Molecular y Propiedades</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('inicio', this)">🏠 Inicio</button>
+            <button class="nav-btn" onclick="showSection('conceptos', this)">📚 Conceptos</button>
+            <button class="nav-btn" onclick="showSection('mapa', this)">🗺️ Mapa Conceptual</button>
+            <button class="nav-btn" onclick="showSection('flashcards', this)">🃏 Flashcards</button>
+            <button class="nav-btn" onclick="showSection('calculadoras', this)">🧮 Herramientas</button>
+            <button class="nav-btn" onclick="showSection('aplicaciones', this)">🏥 Aplicaciones</button>
+            <button class="nav-btn" onclick="showSection('mnemotecnias', this)">🧠 Nemotecnias</button>
+            <button class="nav-btn" onclick="showSection('glosario', this)">📖 Glosario</button>
+            <button class="nav-btn" onclick="showSection('errores', this)">⚠️ Errores Comunes</button>
+            <button class="nav-btn" onclick="showSection('bibliografia', this)">📚 Bibliografía</button>
+            <button class="nav-btn" onclick="showSection('quiz', this)">🎯 Quiz</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio" class="section active">
+            <div class="card">
+                <h2>🎯 Objetivos de la Sesión</h2>
+                <div class="info-box">
+                    <ul style="font-size: 1.1rem; line-height: 2;">
+                        <li>✓ Definir conceptos básicos de estructura atómica</li>
+                        <li>✓ Identificar propiedades básicas del átomo de carbono</li>
+                        <li>✓ Identificar el tipo de hibridación del carbono</li>
+                        <li>✓ Identificar la relación entre la fortaleza y longitud de los enlaces covalentes</li>
+                    </ul>
+                </div>
+
+                <h3>🩺 Importancia para la Medicina</h3>
+                <div class="bio-box">
+                    <div>
+                        <strong>¿Por qué es fundamental este tema?</strong><br>
+                        El carbono es el elemento base de la vida. Comprender su estructura molecular es esencial para:
+                        <ul style="margin-top: 1rem;">
+                            <li>• Entender la estructura de fármacos y su mecanismo de acción</li>
+                            <li>• Comprender el metabolismo y las vías bioquímicas</li>
+                            <li>• Analizar interacciones moleculares en el organismo</li>
+                            <li>• Predecir toxicidad y efectos adversos de compuestos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONCEPTOS (agrupada con subpestañas) -->
+        <section id="conceptos" class="section">
+            <div class="card">
+                <h2>📚 Conceptos</h2>
+                <div id="conceptos-tabs" class="tab-group">
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('conceptos-tabs','sub-estructura', this)">🧬 Estructura del Carbono</button>
+                        <button class="tab" onclick="showTab('conceptos-tabs','sub-hibridacion', this)">⚛️ Hibridación</button>
+                        <button class="tab" onclick="showTab('conceptos-tabs','sub-enlaces', this)">🔗 Enlaces</button>
+                        <button class="tab" onclick="showTab('conceptos-tabs','sub-rupturas', this)">💥 Rupturas Homolíticas y Heterolíticas</button>
+                    </div>
+
+                    <!-- SUBPESTAÑA: ESTRUCTURA DEL CARBONO -->
+                    <div id="sub-estructura" class="tab-content active">
+                        <h3>🧬 Estructura Atómica del Carbono</h3>
+                        <div class="info-box">
+                            <strong>Configuración electrónica:</strong> 1s² 2s² 2p²<br>
+                            <strong>Número atómico:</strong> Z = 6<br>
+                            <strong>Posición en tabla periódica:</strong> Grupo 14, Período 2<br>
+                            <strong>Electronegatividad:</strong> media (≈ 2.5) → forma largas cadenas carbonadas
+                        </div>
+
+                        <div class="img-container">
+                            <img src="estructura-atomica-carbono.png" alt="Estructura Atómica del Carbono" class="molecule-img">
+                        </div>
+
+                        <h3>Enlace Iónico vs Covalente</h3>
+                        <div class="table-responsive">
+                        <table>
+                            <tr><th>Característica</th><th>Enlace Iónico</th><th>Enlace Covalente</th></tr>
+                            <tr><td><strong>Formación</strong></td><td>Transferencia de electrones</td><td>Compartición de electrones</td></tr>
+                            <tr><td><strong>Elementos</strong></td><td>Metal + No Metal</td><td>No Metal + No Metal</td></tr>
+                            <tr><td><strong>Ejemplo</strong></td><td>NaCl (Cloruro de sodio)</td><td>CH₄ (Metano)</td></tr>
+                            <tr><td><strong>Electronegatividad</strong></td><td>Diferencia &gt; 1.7</td><td>Diferencia &lt; 1.7 (polar o no polar)</td></tr>
+                        </table>
+                        </div>
+
+                        <div class="bio-box">
+                            <div>
+                                <strong>Aplicación Médica:</strong> El NaCl es esencial para el equilibrio osmótico y la transmisión del impulso nervioso.
+                                El enlace iónico permite su disociación en Na⁺ y Cl⁻ en solución acuosa.
+                            </div>
+                        </div>
+
+                        <h3>Heteroátomos (O, N, Halógenos, S, etc.)</h3>
+                        <div class="tip-box">
+                            Cualquier átomo diferente a Carbono e Hidrógeno que forme parte de una estructura orgánica.
+                            Usualmente aportan <strong>pares libres de electrones</strong> y también poseen hibridación
+                            (por lo general la misma del carbono al que están unidos). Determinar su hibridación nos indica
+                            en qué orbitales residen sus pares libres.
+                        </div>
+                    </div>
+
+                    <!-- SUBPESTAÑA: HIBRIDACIÓN -->
+                    <div id="sub-hibridacion" class="tab-content">
+                        <h3>Excitación del Carbono</h3>
+                        <div class="info-box">
+                            <strong>Estado fundamental:</strong> 1s² 2s² 2p² (2 electrones desapareados)<br>
+                            <strong>Estado excitado:</strong> 1s² 2s¹ 2p³ (4 electrones desapareados)<br>
+                            <em>El carbono promociona un electrón del orbital 2s al orbital 2p vacío, permitiendo formar 4 enlaces (valencia 4: CH₄, CCl₄, CH₃Cl, CHCl₃).</em>
+                        </div>
+
+                        <div class="img-container">
+                            <img src="excitacion-carbono.png" alt="Excitación del Carbono" class="molecule-img">
+                        </div>
+
+                        <h3>Hibridación sp³ (Carbono Tetraédrico)</h3>
+                        <div class="info-box">
+                            <strong>Características:</strong><br>
+                            • 4 orbitales híbridos sp³ equivalentes<br>
+                            • Geometría: Tetraédrica (109.5°)<br>
+                            • 4 enlaces sigma (σ) • Enlazado a 4 átomos<br>
+                            • Rotación libre alrededor del enlace<br>
+                            • Ejemplo: Metano (CH₄), Etano (C₂H₆)
+                        </div>
+                        <div class="img-container">
+                            <img src="orbitales-sp3.png" alt="Hibridación sp3 - Metano" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Orbitales sp³ - Geometría tetraédrica del metano</p>
+                        </div>
+
+                        <h3>Hibridación sp² (Carbono Trigonal)</h3>
+                        <div class="info-box">
+                            <strong>Características:</strong><br>
+                            • 3 orbitales híbridos sp² + 1 orbital p sin hibridar<br>
+                            • Geometría: Trigonal plana (120°)<br>
+                            • 3 enlaces sigma (σ) + 1 enlace pi (π) • Enlazado a 3 átomos<br>
+                            • Sin rotación (doble enlace)<br>
+                            • Ejemplo: Etileno (C₂H₄), Benceno (C₆H₆)
+                        </div>
+                        <div class="img-container">
+                            <img src="orbitales-sp2.png" alt="Hibridación sp2 - Etileno" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Orbitales sp² - Geometría trigonal plana</p>
+                        </div>
+
+                        <h3>Hibridación sp (Carbono Lineal)</h3>
+                        <div class="info-box">
+                            <strong>Características:</strong><br>
+                            • 2 orbitales híbridos sp + 2 orbitales p sin hibridar<br>
+                            • Geometría: Lineal (180°)<br>
+                            • 2 enlaces sigma (σ) + 2 enlaces pi (π) • Enlazado a 2 átomos<br>
+                            • Sin rotación (triple enlace)<br>
+                            • Ejemplo: Acetileno (C₂H₂)
+                        </div>
+                        <div class="img-container">
+                            <img src="orbitales-sp.png" alt="Hibridación sp - Acetileno" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Orbitales sp - Geometría lineal del acetileno</p>
+                        </div>
+                        <div class="img-container">
+                            <img src="diagrama-orbitales-moleculares-acetileno.png" alt="Orbitales Moleculares del Acetileno" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Diagrama completo de orbitales moleculares del acetileno</p>
+                        </div>
+
+                        <h3>Resumen de Hibridación</h3>
+                        <div class="table-responsive">
+                        <table>
+                            <tr><th>Hibridación</th><th>Geometría</th><th>Ángulo</th><th>Enlaces</th><th>Orbitales p</th><th>Rotación</th><th>Ejemplo</th></tr>
+                            <tr><td><strong>sp³</strong></td><td>Tetraédrica</td><td>109.5°</td><td>4 σ</td><td>Ninguno</td><td>Libre</td><td>CH₄</td></tr>
+                            <tr><td><strong>sp²</strong></td><td>Trigonal plana</td><td>120°</td><td>3 σ + 1 π</td><td>1</td><td>No</td><td>C₂H₄</td></tr>
+                            <tr><td><strong>sp</strong></td><td>Lineal</td><td>180°</td><td>2 σ + 2 π</td><td>2</td><td>No</td><td>C₂H₂</td></tr>
+                        </table>
+                        </div>
+                    </div>
+
+                    <!-- SUBPESTAÑA: ENLACES -->
+                    <div id="sub-enlaces" class="tab-content">
+                        <h3>🔗 Fortaleza y Longitud de Enlace</h3>
+                        <h3>Enlace Sigma (σ) vs Enlace Pi (π)</h3>
+                        <div class="img-container">
+                            <img src="sigma-pi-bonds.png" alt="Enlace Sigma y Pi" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Enlace Sigma (σ) - Superposición frontal y Pi (π) - Superposición lateral</p>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Fortaleza de enlace:</strong><br>
+                            • Enlace σ &gt; Enlace π<br>
+                            • Triple enlace &gt; Doble enlace &gt; Enlace simple<br>
+                            • Ejemplo: C≡C (839 kJ/mol) &gt; C=C (614 kJ/mol) &gt; C-C (347 kJ/mol)
+                        </div>
+
+                        <h3>Longitud de Enlace</h3>
+                        <div class="table-responsive">
+                        <table>
+                            <tr><th>Tipo de Enlace</th><th>Longitud (pm)</th><th>Energía (kJ/mol)</th><th>Fortaleza</th></tr>
+                            <tr><td><strong>C-C</strong> (simple)</td><td>154 pm</td><td>347</td><td>Menor</td></tr>
+                            <tr><td><strong>C=C</strong> (doble)</td><td>134 pm</td><td>614</td><td>Intermedia</td></tr>
+                            <tr><td><strong>C≡C</strong> (triple)</td><td>120 pm</td><td>839</td><td>Mayor</td></tr>
+                            <tr><td><strong>C-H</strong></td><td>109 pm</td><td>413</td><td>Alta</td></tr>
+                        </table>
+                        </div>
+
+                        <div class="tip-box">
+                            <strong>Regla importante:</strong><br>
+                            A mayor número de enlaces entre dos átomos:<br>
+                            ✓ Mayor fortaleza del enlace<br>
+                            ✓ Menor longitud de enlace<br>
+                            ✓ Menor rotación posible
+                        </div>
+                    </div>
+
+                    <!-- SUBPESTAÑA NUEVA: RUPTURAS -->
+                    <div id="sub-rupturas" class="tab-content">
+                        <h3>💥 Tipos de Ruptura de un Enlace Químico</h3>
+                        <p>Cuando un enlace covalente se rompe, el par de electrones compartidos puede distribuirse de dos formas, dando lugar a dos tipos de ruptura:</p>
+
+                        <div class="img-container">
+                            <img src="ruptura-homolitica-heterolitica.png" alt="Ruptura homolítica y heterolítica de un enlace covalente A–B" class="molecule-img">
+                            <p style="margin-top: 0.5rem; font-style: italic; color: #666;">Izquierda: ruptura homolítica (flechas de medio arpón → radicales). Derecha: ruptura heterolítica (flecha de arpón completo → iones).</p>
+                        </div>
+
+                        <h3>Ruptura Homolítica (→ Radicales libres)</h3>
+                        <div class="info-box">
+                            • El par de electrones se divide <strong>equitativamente</strong>: un electrón para cada átomo.<br>
+                            • Se representa con <strong>flechas de medio arpón</strong> (fishhook, media punta).<br>
+                            • Genera <strong>radicales libres</strong>: especies con un electrón desapareado, muy reactivas (A• y B•).<br>
+                            • Favorecida por <strong>luz UV, calor o peróxidos</strong> (iniciadores radicalarios).<br>
+                            • Ejemplo: Cl₂ → 2 Cl• &nbsp;|&nbsp; En el organismo: especies reactivas de oxígeno como •OH y O₂•⁻
+                        </div>
+
+                        <h3>Ruptura Heterolítica (→ Iones)</h3>
+                        <div class="pharma-box">
+                            • El par de electrones queda <strong>retenido por el átomo más electronegativo</strong>.<br>
+                            • Se representa con <strong>flechas curvas de arpón completo</strong> (punta entera).<br>
+                            • Genera <strong>iones</strong>: un <strong>catión</strong> (si el carbono pierde el par: <strong>carbocatión</strong>, electrófilo) y un <strong>anión</strong> (si el carbono lo retiene: <strong>carbanión</strong>, nucleófilo).<br>
+                            • Favorecida por diferencias de electronegatividad y <strong>solventes polares</strong> como el agua.<br>
+                            • Ejemplo: H–Cl → H⁺ + Cl⁻ &nbsp;|&nbsp; Ionización de fármacos ácidos/básicos en el plasma.
+                        </div>
+
+                        <h3>Comparación</h3>
+                        <div class="table-responsive">
+                        <table>
+                            <tr><th>Característica</th><th>Homolítica</th><th>Heterolítica</th></tr>
+                            <tr><td><strong>Distribución de electrones</strong></td><td>1 electrón para cada átomo</td><td>Ambos electrones a un átomo</td></tr>
+                            <tr><td><strong>Productos</strong></td><td>Radicales libres (A•, B•)</td><td>Iones (catión ⁺ / anión ⁻)</td></tr>
+                            <tr><td><strong>Flechas</strong></td><td>Medio arpón (media punta)</td><td>Arpón completo (punta entera)</td></tr>
+                            <tr><td><strong>Condiciones típicas</strong></td><td>Luz UV, calor, peróxidos</td><td>Solventes polares, Δ electronegatividad</td></tr>
+                            <tr><td><strong>Ejemplo</strong></td><td>Cl₂ → 2 Cl•</td><td>HCl → H⁺ + Cl</td></tr>
+                            <tr><td><strong>Relevancia biológica</strong></td><td>Estrés oxidativo, daño al ADN</td><td>Ionización de fármacos, carbocationes en reacciones</td></tr>
+                        </table>
+                        </div>
+
+                        <div class="tip-box">
+                            <strong>Relevancia médica:</strong> Los radicales libres generados por ruptura homolítica producen
+                            <em>estrés oxidativo</em> (peroxidación lipídica de membranas, daño al ADN); los antioxidantes (vitaminas C y E)
+                            donan electrones/H• para estabilizarlos. El citocromo P450 metaboliza fármacos mediante mecanismos radicalarios
+                            e iónicos, y la ruptura heterolítica explica la ionización de fármacos (p. ej., aspirina) en el organismo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MAPA CONCEPTUAL -->
+        <section id="mapa" class="section">
+            <div class="card">
+                <h2>🗺️ Mapa Conceptual Interactivo</h2>
+                <p style="margin-bottom: 1rem;">Haz <strong>clic en cada nodo</strong> para desplegar u ocultar sus ramas. (No requiere archivos externos.)</p>
+                <div class="map-container">
+                    <ul class="map-tree">
+                        <li class="has-children">
+                            <div class="map-node root" onclick="toggleMap(this)">🧪 Estructura Molecular y Propiedades</div>
+                            <ul>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">⚛️ Átomo de Carbono</div>
+                                    <ul>
+                                        <li><span class="map-leaf">Z = 6 • Configuración 1s² 2s² 2p²</span></li>
+                                        <li><span class="map-leaf">Excitación: 2s → 2p (4 e⁻ desapareados)</span></li>
+                                        <li><span class="map-leaf">Valencia 4 (CH₄, CCl₄, CHCl₃)</span></li>
+                                        <li><span class="map-leaf">Electronegatividad media → cadenas largas</span></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">🔀 Hibridación</div>
+                                    <ul>
+                                        <li><span class="map-leaf">sp³ → Tetraédrica • 109.5° • 4 σ • rotación libre (CH₄)</span></li>
+                                        <li><span class="map-leaf">sp² → Trigonal plana • 120° • 3 σ + 1 π • sin rotación (C₂H₄)</span></li>
+                                        <li><span class="map-leaf">sp → Lineal • 180° • 2 σ + 2 π • sin rotación (C₂H₂)</span></li>
+                                        <li><span class="map-leaf">Justifica geometría, longitud y fortaleza de enlaces</span></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">🔗 Enlaces Covalentes</div>
+                                    <ul>
+                                        <li><span class="map-leaf">Sigma (σ): superposición frontal • fuerte • rota</span></li>
+                                        <li><span class="map-leaf">Pi (π): superposición lateral • débil • NO rota</span></li>
+                                        <li><span class="map-leaf">Fortaleza: triple &gt; doble &gt; simple</span></li>
+                                        <li><span class="map-leaf">Longitud: simple &gt; doble &gt; triple</span></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">💥 Ruptura de Enlaces</div>
+                                    <ul>
+                                        <li><span class="map-leaf">Homolítica → radicales libres (luz/calor, medio arpón)</span></li>
+                                        <li><span class="map-leaf">Heterolítica → cationes/aniones (arpón completo)</span></li>
+                                        <li><span class="map-leaf">Carbocatión (C⁺) y carbanión (C⁻)</span></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">🧫 Heteroátomos</div>
+                                    <ul>
+                                        <li><span class="map-leaf">O, N, S, halógenos</span></li>
+                                        <li><span class="map-leaf">Aportan pares libres • tienen hibridación</span></li>
+                                        <li><span class="map-leaf">Ej.: O en H₂O → sp³ (2 enlaces + 2 pares libres)</span></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <div class="map-node branch" onclick="toggleMap(this)">⚖️ Enlace Iónico vs Covalente</div>
+                                    <ul>
+                                        <li><span class="map-leaf">Iónico: transferencia • ΔEN &gt; 1.7 (NaCl)</span></li>
+                                        <li><span class="map-leaf">Covalente: compartición • ΔEN &lt; 1.7 (CH₄)</span></li>
+                                        <li><span class="map-leaf">Covalente polar y no polar</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FLASHCARDS -->
+        <section id="flashcards" class="section">
+            <div class="card">
+                <h2>🃏 Flashcards de Estudio</h2>
+                <p>Haz <strong>clic en la tarjeta</strong> para voltearla y ver la respuesta. Luego califícate con honestidad.</p>
+
+                <div class="fc-stats">
+                    <span class="fc-stat good">✅ Buenas: <span id="fc-good">0</span></span>
+                    <span class="fc-stat bad">❌ Malas: <span id="fc-bad">0</span></span>
+                    <span class="fc-stat pending">⏳ Pendientes: <span id="fc-left">0</span></span>
+                    <span class="fc-stat total">📈 Historial: <span id="fc-hist">0 ✓ / 0 ✗</span></span>
+                </div>
+                <div class="fc-progress"><div class="fc-progress-bar" id="fc-bar"></div></div>
+
+                <div class="flashcard-scene" id="fc-scene">
+                    <div class="flashcard" id="fc-card" onclick="flipCard()">
+                        <div class="fc-face fc-front">
+                            <div class="fc-label">PREGUNTA</div>
+                            <div id="fc-question"></div>
+                            <span class="fc-hint">Clic para voltear ✨</span>
+                        </div>
+                        <div class="fc-face fc-back">
+                            <div class="fc-label">RESPUESTA</div>
+                            <div id="fc-answer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fc-controls" id="fc-controls">
+                    <button class="fc-btn good" id="btn-fc-good" onclick="gradeCard(true)" disabled>✅ La sabía</button>
+                    <button class="fc-btn bad" id="btn-fc-bad" onclick="gradeCard(false)" disabled>❌ No la sabía</button>
+                </div>
+
+                <div id="fc-summary" class="calc-result" style="max-width:720px;margin:1rem auto;"></div>
+                <div style="text-align:center;">
+                    <button class="calc-button" onclick="resetFlashcards()">🔄 Reiniciar Flashcards</button><br>
+                    <button class="fc-link" onclick="borrarHistorial()">Borrar historial acumulado</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN HERRAMIENTAS -->
+        <section id="calculadoras" class="section">
+            <div class="card">
+                <h2>🧮 Herramientas Interactivas</h2>
+                <div id="herramientas-tabs" class="tab-group">
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('herramientas-tabs','calculadora-hibridacion', this)">🔬 Calculadora de Hibridación</button>
+                        <button class="tab" onclick="showTab('herramientas-tabs','comparador-enlaces', this)">📊 Comparador de Enlaces</button>
+                        <button class="tab" onclick="showTab('herramientas-tabs','visualizador', this)">👁️ Visualizador</button>
+                    </div>
+
+                    <div id="calculadora-hibridacion" class="tab-content active">
+                        <div class="calculator">
+                            <div class="calc-title">🔬 Determina la Hibridación del Carbono</div>
+                            <div class="calc-input-group">
+                                <label>Número de átomos enlazados al carbono:</label>
+                                <input type="number" id="num-enlaces" min="1" max="4" placeholder="Ej: 4">
+                            </div>
+                            <div class="calc-input-group">
+                                <label>Número de enlaces π (dobles o triples):</label>
+                                <input type="number" id="num-pi" min="0" max="2" placeholder="Ej: 0">
+                            </div>
+                            <button class="calc-button" onclick="calcularHibridacion()">Calcular Hibridación</button>
+                            <div id="hibridacion-resultado" class="calc-result"></div>
+                            <div class="info-box" style="margin-top: 2rem;">
+                                <strong>Ejemplos:</strong><br>
+                                • CH₄: 4 átomos enlazados, 0 enlaces π → sp³<br>
+                                • C₂H₄: 3 átomos enlazados, 1 enlace π → sp²<br>
+                                • C₂H₂: 2 átomos enlazados, 2 enlaces π → sp
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="comparador-enlaces" class="tab-content">
+                        <div class="calculator">
+                            <div class="calc-title">📊 Comparador de Longitud y Fortaleza</div>
+                            <div class="calc-input-group">
+                                <label>Tipo de enlace 1:</label>
+                                <select id="enlace1">
+                                    <option value="C-C">C-C (simple)</option>
+                                    <option value="C=C">C=C (doble)</option>
+                                    <option value="C≡C">C≡C (triple)</option>
+                                    <option value="C-H">C-H</option>
+                                    <option value="C-O">C-O</option>
+                                    <option value="C=O">C=O</option>
+                                </select>
+                            </div>
+                            <div class="calc-input-group">
+                                <label>Tipo de enlace 2:</label>
+                                <select id="enlace2">
+                                    <option value="C-C">C-C (simple)</option>
+                                    <option value="C=C" selected>C=C (doble)</option>
+                                    <option value="C≡C">C≡C (triple)</option>
+                                    <option value="C-H">C-H</option>
+                                    <option value="C-O">C-O</option>
+                                    <option value="C=O">C=O</option>
+                                </select>
+                            </div>
+                            <button class="calc-button" onclick="compararEnlaces()">Comparar</button>
+                            <div id="comparacion-resultado" class="calc-result"></div>
+                        </div>
+                    </div>
+
+                    <div id="visualizador" class="tab-content">
+                        <div class="calculator">
+                            <div class="calc-title">👁️ Visualizador de Geometría Molecular</div>
+                            <div class="calc-input-group">
+                                <label>Selecciona la hibridación:</label>
+                                <select id="tipo-hibridacion" onchange="mostrarGeometria()">
+                                    <option value="sp3">sp³ - Tetraédrica</option>
+                                    <option value="sp2">sp² - Trigonal Plana</option>
+                                    <option value="sp">sp - Lineal</option>
+                                </select>
+                            </div>
+                            <div id="geometria-visual" style="margin-top: 2rem; text-align: center;"></div>
+                            <div id="geometria-info" class="info-box" style="margin-top: 1rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN APLICACIONES -->
+        <section id="aplicaciones" class="section">
+            <div class="card">
+                <h2>🏥 Aplicaciones Profesionales</h2>
+                <p>Uso de la información de clase para resolver problemas en tres profesiones:</p>
+                <div id="aplicaciones-tabs" class="tab-group">
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('aplicaciones-tabs','aplic-medicina', this)">🩺 Medicina</button>
+                        <button class="tab" onclick="showTab('aplicaciones-tabs','aplic-farma', this)">💊 Farmacología</button>
+                        <button class="tab" onclick="showTab('aplicaciones-tabs','aplic-bioq', this)">🧬 Bioquímica</button>
+                    </div>
+
+                    <!-- MEDICINA -->
+                    <div id="aplic-medicina" class="tab-content active">
+                        <div class="bio-box"><strong>Enfoque clínico:</strong> La hibridación y los tipos de ruptura de enlace explican intoxicaciones, toxicidad de metabolitos y el daño por radicales libres.</div>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 1 — Intoxicación por metanol:</strong> En emergencia ingresa un paciente que ingirió "alcohol de quemar" (metanol, CH₃OH). Su metabolismo lo convierte en formaldehído (H₂C=O) y luego en ácido fórmico (causante de ceguera).<br>
+                            a) Indica la hibridación del carbono en el metanol y en el formaldehído.<br>
+                            b) Explica, en términos de enlaces y ruptura, por qué el formaldehído es mucho más reactivo y tóxico.
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p><strong>a)</strong> Metanol: el C tiene 4 enlaces σ (3 C–H + 1 C–O) y 0 enlaces π → número estérico 4 → <strong>sp³</strong> (tetraédrico, 109.5°). Formaldehído: el C tiene 3 enlaces σ (2 C–H + 1 C–O) y 1 enlace π (C=O) → número estérico 3 → <strong>sp²</strong> (trigonal plano, 120°).</p>
+                            <p><strong>b)</strong> El doble enlace C=O posee un enlace π débil que se rompe con facilidad por <strong>ruptura heterolítica</strong>: el O (más electronegativo) retiene el par, dejando al carbono con carácter positivo (electrófilo). Ese carbono electrofílico ataca proteínas y ADN formando aductos → toxicidad. Además, la geometría plana sp² facilita el ataque de nucleófilos biológicos.</p>
+                        </details>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 2 — Estrés oxidativo:</strong> ¿Por qué la radiación UV y ciertos tóxicos dañan los tejidos? Explica el mecanismo usando el tipo de ruptura de enlace y propone cómo actúan los antioxidantes.
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p>La energía (UV, calor) produce <strong>ruptura homolítica</strong> de enlaces → radicales libres (•OH, O₂•⁻, ROO•). Estos roban electrones de otras moléculas en cadena: peroxidación lipídica de membranas, roturas del ADN y daño proteico.</p>
+                            <p>Los antioxidantes (vitamina C, vitamina E, glutatión) donan un electrón o un H• al radical, estabilizándolo y terminando la cadena radicalaria. Caso ligado a clase: la intoxicación por paracetamol genera NAPQI (electrófilo sp²) que agota el glutatión; el antídoto N-acetilcisteína lo repone.</p>
+                        </details>
+
+                        <h3>Relación Estructura–Toxicidad</h3>
+                        <div class="table-responsive">
+                        <table>
+                            <tr><th>Compuesto</th><th>Hibridación</th><th>Mecanismo Tóxico</th><th>Aplicación Clínica</th></tr>
+                            <tr><td><strong>Benceno</strong></td><td>sp² (aromático)</td><td>Metabolito epóxido daña ADN → Leucemia</td><td>Solvente industrial (prohibido)</td></tr>
+                            <tr><td><strong>Formaldehído</strong></td><td>sp² (C=O)</td><td>Forma aductos con proteínas y ADN</td><td>Desinfectante, conservante</td></tr>
+                            <tr><td><strong>Acetileno</strong></td><td>sp (triple enlace)</td><td>Alta reactividad → irritante</td><td>Anestésico histórico</td></tr>
+                            <tr><td><strong>Metanol</strong></td><td>sp³</td><td>Metabolito: formaldehído + ácido fórmico → ceguera</td><td>Antídoto: Etanol o Fomepizol</td></tr>
+                        </table>
+                        </div>
+                    </div>
+
+                    <!-- FARMACOLOGÍA -->
+                    <div id="aplic-farma" class="tab-content">
+                        <div class="pharma-box"><strong>Relación Estructura–Actividad (SAR):</strong> La hibridación determina la forma 3D del fármaco y su capacidad de unirse a receptores; los enlaces π permiten interacciones π–π y la rigidez conformacional.</div>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 1 — Aspirina y COX:</strong> La aspirina (ácido acetilsalicílico) posee un anillo aromático con seis carbonos sp². Explica qué ventaja aporta esta geometría para su unión a la ciclooxigenasa (COX) y su mecanismo de acción.
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p>Los carbonos sp² del anillo son <strong>trigonales planos (120°)</strong>: el anillo es completamente plano y su nube π deslocalizada establece <strong>interacciones π–π</strong> con residuos aromáticos del sitio activo de la COX, posicionando el fármaco correctamente.</p>
+                            <p>Una vez acomodado, el grupo acetilo (carbono sp² del C=O, electrófilo por ruptura heterolítica del π) <strong>acetila el residuo Ser530</strong> de la COX, inactivándola de forma irreversible → bloquea la síntesis de prostaglandinas (efecto analgésico/antiinflamatorio).</p>
+                        </details>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 2 — Isómeros cis/trans del tamoxifeno:</strong> El tamoxifeno posee un doble enlace C=C que origina isómeros (E) y (Z). a) ¿Por qué ese doble enlace no rota? b) ¿Por qué los isómeros tienen distinta actividad farmacológica?
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p><strong>a)</strong> El doble enlace = 1 σ + 1 π. El enlace π se forma por superposición lateral de orbitales p; si hubiera rotación, esa superposición se rompería. Por eso el C=C (sp²) es <strong>rígido</strong> y genera isomería geométrica.</p>
+                            <p><strong>b)</strong> Cada isómero presenta una <strong>forma 3D distinta</strong>: solo la geometría trans (E) complementa correctamente el receptor de estrógeno en mama, actuando como antiestrógeno en el cáncer de mama. La hibridación sp² y la rigidez del π determinan así el efecto terapéutico (la geometría equivocada puede incluso actuar como agonista en otros tejidos).</p>
+                        </details>
+                    </div>
+
+                    <!-- BIOQUÍMICA -->
+                    <div id="aplic-bioq" class="tab-content">
+                        <div class="bio-box"><strong>Enfoque molecular:</strong> Las biomoléculas combinan carbonos sp³ (flexibilidad, rotación de enlaces σ) y sp² (planicidad, apilamiento π), lo que define la estructura de ADN, proteínas y metabolitos.</div>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 1 — Hibridaciones en el ADN:</strong> Identifica la hibridación predominante en: a) los carbonos de la desoxirribosa, b) los carbonos de las bases nitrogenadas. Relaciona cada una con su función estructural.
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p><strong>a)</strong> Desoxirribosa: carbonos con 4 enlaces σ → <strong>sp³</strong>. Los enlaces σ permiten <strong>rotación libre</strong>, dando flexibilidad al esqueleto azúcar-fosfato para plegarse en la doble hélice.</p>
+                            <p><strong>b)</strong> Bases nitrogenadas: anillos planos con dobles enlaces conjugados → carbonos <strong>sp²</strong>. La planicidad y las nubes π permiten el <strong>apilamiento π–π</strong> de las bases, que estabiliza la doble hélice, además del apareamiento por puentes de hidrógeno.</p>
+                        </details>
+
+                        <div class="problem-box">
+                            <strong>📋 Problema 2 — El piruvato:</strong> En la glucólisis se forma piruvato: CH₃–CO–COO⁻. a) Indica la hibridación de cada carbono. b) Señala cuántos enlaces σ y π posee en total la zona C=O del cetoácido. c) ¿Qué le ocurre al piruvato en la descarboxilación oxidativa respecto a su carbono carboxílico?
+                        </div>
+                        <details class="solution">
+                            <summary>🔍 Ver solución paso a paso</summary>
+                            <p><strong>a)</strong> CH₃: 4 σ → <strong>sp³</strong>. C carbonílico (C=O): 3 σ + 1 π → <strong>sp²</strong>. C carboxílico (COO⁻): 3 σ + 1 π → <strong>sp²</strong>.</p>
+                            <p><strong>b)</strong> El grupo C=O tiene 1 enlace σ (fuerte, head-on) + 1 enlace π (débil, lateral). Por eso el C=O (799 kJ/mol) es más corto y fuerte que un C–C simple, pero su π es el punto de ataque de nucleófilos enzimáticos.</p>
+                            <p><strong>c)</strong> En la formación de acetil-CoA (complejo piruvato deshidrogenasa) se rompe el enlace C–C del carboxilo (ruptura que libera CO₂); los electrones se redistribuyen y el NAD⁺ capta electrones: es un ejemplo biológico de cómo la célula transforma enlaces σ/π en energía utilizable (ciclo de Krebs).</p>
+                        </details>
+
+                        <div class="info-box">
+                            <strong>Datos de clase aplicados:</strong> Ciclo de Krebs: intermediarios como el citrato poseen carbonos sp³ (flexibilidad conformacional). Cadena respiratoria: el anillo porfirínico del hemo (carbonos sp², conjugado) permite el transporte de electrones.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MNEMOTECNIAS -->
+        <section id="mnemotecnias" class="section">
+            <div class="card">
+                <h2>🧠 Nemotecnias y Reglas Mnemotécnicas</h2>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">🎵 Nemotecnia Musical: "La Canción del Carbono"</div>
+                    <p style="font-style: italic; line-height: 2;">
+                        <strong>"Si tiene cuatro enlaces, es sp³ (tetraédrico, 109.5°)"</strong><br>
+                        <strong>"Si tiene un doble, es sp² (trigonal, 120°)"</strong><br>
+                        <strong>"Si tiene un triple, es sp (lineal, 180°)"</strong>
+                    </p>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">📊 Regla Práctica: "Cuenta y Resta"</div>
+                    <div class="info-box">
+                        <strong>Fórmula:</strong> Número estérico = Átomos enlazados + Pares libres<br>
+                        • Si es 4 → sp³ &nbsp; • Si es 3 → sp² &nbsp; • Si es 2 → sp
+                    </div>
+                    <p><strong>Ejemplo:</strong> En CH₄: 4 átomos H + 0 pares libres = 4 → sp³</p>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">🧩 Acrónimo: "TDL" para Fortaleza de Enlaces</div>
+                    <div class="tip-box"><strong>T</strong>riple &gt; <strong>D</strong>oble &gt; <strong>L</strong>ibre (simple) — <em>Triple es más fuerte, pero más corto</em></div>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">📐 Ángulos: "109-120-180"</div>
+                    <p><strong>sp³:</strong> 109.5° → "Casi 110, como un tetraedro"<br><strong>sp²:</strong> 120° → "Como un triángulo equilátero"<br><strong>sp:</strong> 180° → "Línea recta, como una regla"</p>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">🎯 Para Heteroátomos: "Imita al Vecino"</div>
+                    <div class="info-box"><strong>Regla:</strong> Los heteroátomos (O, N, S) generalmente tienen la misma hibridación que el carbono al que están unidos.<br><em>Ejemplo:</em> En CH₃-OH, el oxígeno es sp³ como el carbono</div>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">🔬 Sigma vs Pi: "S de Sólido, P de Péndulo"</div>
+                    <p><strong>Sigma (σ):</strong> Sólido, fuerte, permite rotación<br><strong>Pi (π):</strong> Péndulo, débil, NO permite rotación</p>
+                </div>
+                <div class="mnemonic-card">
+                    <div class="mnemonic-title">💥 Rupturas: "Homo par, Hetero impar"</div>
+                    <p><strong>HOMolítica:</strong> reparte <strong>par</strong>ejo (1 e⁻ cada uno) → radicales (medio arpón)<br><strong>HETERolítica:</strong> uno se lleva <strong>todo</strong> el par → iones (arpón completo)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN GLOSARIO -->
+        <section id="glosario" class="section">
+            <div class="card">
+                <h2>📖 Glosario Interactivo</h2>
+                <p style="margin-bottom: 1.5rem;">Haz clic en cada término para ver su definición:</p>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Orbital Atómico</strong><div class="glossary-definition">Región del espacio alrededor del núcleo donde existe alta probabilidad (90%) de encontrar un electrón. Los orbitales s son esféricos y los p tienen forma de mancuerna.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Hibridación</strong><div class="glossary-definition">Proceso teórico mediante el cual orbitales atómicos de diferente energía (s y p) se combinan para formar nuevos orbitales híbridos de energía intermedia y geometría definida.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Enlace Sigma (σ)</strong><div class="glossary-definition">Enlace covalente formado por superposición frontal de orbitales a lo largo del eje internuclear. Es el enlace más fuerte y permite rotación libre.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Enlace Pi (π)</strong><div class="glossary-definition">Enlace covalente formado por superposición lateral de orbitales p perpendiculares al eje internuclear. Es más débil que el enlace sigma y no permite rotación.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Valencia</strong><div class="glossary-definition">Capacidad de combinación de un átomo, determinada por el número de electrones desapareados disponibles para formar enlaces covalentes.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Excitación Electrónica</strong><div class="glossary-definition">Proceso mediante el cual un electrón absorbe energía y salta de un orbital de menor energía a uno de mayor energía. En el carbono, un electrón 2s salta a 2p.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Geometría Molecular</strong><div class="glossary-definition">Disposición tridimensional de los átomos en una molécula, determinada por la hibridación y la repulsión de pares de electrones de valencia (TRPEV).</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Heteroátomo</strong><div class="glossary-definition">Cualquier átomo diferente de carbono e hidrógeno que forma parte de una molécula orgánica. Los más comunes son: oxígeno, nitrógeno, azufre y halógenos.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Longitud de Enlace</strong><div class="glossary-definition">Distancia promedio entre los núcleos de dos átomos enlazados. Disminuye al aumentar el orden de enlace: simple &gt; doble &gt; triple.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Energía de Enlace</strong><div class="glossary-definition">Cantidad de energía necesaria para romper un enlace químico. Aumenta con el orden de enlace: triple &gt; doble &gt; simple.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Ruptura Homolítica</strong><div class="glossary-definition">Ruptura simétrica de un enlace covalente donde cada átomo conserva un electrón del par compartido, generando radicales libres. Se indica con flechas de medio arpón.</div></div>
+                <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Ruptura Heterolítica</strong><div class="glossary-definition">Ruptura asimétrica de un enlace covalente donde el átomo más electronegativo retiene ambos electrones, generando iones (catión y anión). Se indica con flechas curvas completas.</div></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN ERRORES COMUNES -->
+        <section id="errores" class="section">
+            <div class="card">
+                <h2>⚠️ Errores Comunes de Estudiantes</h2>
+                <div class="error-card"><div class="error-title">❌ Error 1: Confundir hibridación con geometría</div><p><strong>Error:</strong> "Si es tetraédrico, entonces es sp³" (sin verificar los enlaces)</p><div class="correction"><strong>✓ Corrección:</strong> La hibridación se determina por el número estérico (átomos enlazados + pares libres), no solo por la geometría. Ejemplo: NH₃ es sp³ pero su geometría es piramidal, no tetraédrica.</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 2: Pensar que todos los carbonos son sp³</div><p><strong>Error:</strong> Asumir que el carbono siempre forma 4 enlaces simples</p><div class="correction"><strong>✓ Corrección:</strong> El carbono puede ser sp³ (4 enlaces σ), sp² (3 σ + 1 π) o sp (2 σ + 2 π). Siempre cuenta los enlaces π para determinar la hibridación.</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 3: Confundir longitud con fortaleza</div><p><strong>Error:</strong> "Un enlace más largo es más fuerte"</p><div class="correction"><strong>✓ Corrección:</strong> Es lo contrario: un enlace más corto es más fuerte. C≡C (120 pm) es más corto y más fuerte que C-C (154 pm).</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 4: Olvidar que el enlace π no rota</div><p><strong>Error:</strong> Dibujar rotación alrededor de dobles o triples enlaces</p><div class="correction"><strong>✓ Corrección:</strong> Solo los enlaces sigma (σ) permiten rotación libre. Los enlaces π "bloquean" la rotación, lo que genera isómeros cis-trans.</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 5: No considerar pares libres en heteroátomos</div><p><strong>Error:</strong> Calcular hibridación solo con átomos enlazados</p><div class="correction"><strong>✓ Corrección:</strong> Los pares libres de electrones también ocupan orbitales híbridos. Ejemplo: En H₂O, el oxígeno tiene 2 átomos enlazados + 2 pares libres = 4 → sp³</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 6: Pensar que la excitación es opcional</div><p><strong>Error:</strong> "El carbono puede formar 4 enlaces sin excitarse"</p><div class="correction"><strong>✓ Corrección:</strong> La excitación es necesaria para que el carbono tenga 4 electrones desapareados. Sin excitación, solo tendría 2 (configuración 2s² 2p²).</div></div>
+                <div class="error-card"><div class="error-title">❌ Error 7: Confundir las flechas de ruptura</div><p><strong>Error:</strong> Usar flecha completa para radicales o medio arpón para iones</p><div class="correction"><strong>✓ Corrección:</strong> Homolítica = flechas de medio arpón (1 e⁻ cada una) → radicales. Heterolítica = flecha curva completa (par de e⁻) → iones.</div></div>
+                <div class="tip-box" style="margin-top: 2rem;"><strong>💡 Consejo de Estudio:</strong><br>Practica identificando la hibridación en moléculas complejas. Empieza por contar:<br>1. Átomos enlazados al carbono<br>2. Enlaces π presentes<br>3. Pares libres (si es heteroátomo)<br>¡La práctica hace al maestro!</div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN BIBLIOGRAFÍA -->
+        <section id="bibliografia" class="section">
+            <div class="card">
+                <h2>📚 Fuentes Bibliográficas Universitarias</h2>
+                <h3>Libros de Texto Principales</h3>
+                <div class="info-box"><strong>1. Wade, L.G. - "Química Orgánica"</strong><br>• <strong>Capítulo 1:</strong> Estructura y Enlace (páginas 1-45)<br>• <strong>Capítulo 2:</strong> Estructura y Propiedades de Moléculas Orgánicas (páginas 46-89)<br>• <strong>Sección específica:</strong> Hibridación del carbono (páginas 12-28)<br>• 9na edición, Pearson Education, 2017</div>
+                <div class="info-box"><strong>2. McMurry, J. - "Química Orgánica"</strong><br>• <strong>Capítulo 1:</strong> Estructura y Enlace. Ácidos y Bases (páginas 1-42)<br>• <strong>Sección 1.6:</strong> Hibridación sp³ del carbono (páginas 14-18)<br>• <strong>Sección 1.8:</strong> Hibridación sp² y sp (páginas 20-25)<br>• 9na edición, Cengage Learning, 2016</div>
+                <div class="info-box"><strong>3. Solomons, T.W.G. & Fryhle, C.B. - "Química Orgánica"</strong><br>• <strong>Capítulo 1:</strong> Fundamentos del Enlace Químico (páginas 1-50)<br>• <strong>Capítulo 2:</strong> Familias de Compuestos de Carbono (páginas 51-95)<br>• <strong>Sección específica:</strong> Longitud y energía de enlace (páginas 32-38)<br>• 10ma edición, Wiley, 2011</div>
+                <h3>Recursos Especializados</h3>
+                <div class="bio-box"><div><strong>4. Clayden, J. - "Organic Chemistry"</strong><br>• <strong>Capítulo 4:</strong> Enlace y geometría molecular (páginas 78-112)<br>• <strong>Enfoque:</strong> Orbital molecular y teoría de enlace de valencia<br>• 2da edición, Oxford University Press, 2012</div></div>
+                <div class="pharma-box"><div><strong>5. Patrick, G.L. - "An Introduction to Medicinal Chemistry"</strong><br>• <strong>Capítulo 2:</strong> Enlaces intermoleculares y fuerzas (páginas 23-56)<br>• <strong>Aplicación:</strong> Relación estructura-actividad de fármacos<br>• 6ta edición, Oxford University Press, 2017</div></div>
+                <h3>Artículos Científicos</h3>
+                <div class="info-box"><strong>6. "The Nature of the Chemical Bond" - Pauling, L. (1931)</strong><br>• Journal of the American Chemical Society<br>• <strong>Volumen 53:</strong> Páginas 1367-1400<br>• Artículo fundamental sobre hibridación</div>
+                <div class="tip-box"><strong>7. Recursos en Línea:</strong><br>• <strong>PubChem:</strong> https://pubchem.ncbi.nlm.nih.gov (bases de datos de estructuras)<br>• <strong>ChemSpider:</strong> http://www.chemspider.com (propiedades moleculares)<br>• <strong>MolView:</strong> https://molview.org (visualizador 3D gratuito)</div>
+                <h3>Recursos UPCH</h3>
+                <div class="bio-box"><div><strong>8. Material de Clase - Facultad de Medicina UPCH</strong><br>• Manual de Laboratorio de Química Orgánica<br>• Guías de Práctica Calificada<br>• Banco de preguntas de exámenes anteriores</div></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN QUIZ -->
+        <section id="quiz" class="section">
+            <div class="card">
+                <h2>🎯 Quiz de Autoevaluación</h2>
+                <p>Pon a prueba tus conocimientos. Selecciona la respuesta correcta:</p>
+                <div id="quiz-container"></div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="calc-button" onclick="reiniciarQuiz()">🔄 Reiniciar Quiz</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">🎓 Universidad Peruana Cayetano Heredia</p>
+        <p>Facultad de Medicina • Departamento de Ciencias Básicas</p>
+        <p style="margin-top: 1rem; font-style: italic;">"La química orgánica es el lenguaje de la vida"</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">© 2026 - Material educativo para estudiantes de medicina</p>
+    </footer>
+
+    <script>
+        // ================= BASES DE DATOS =================
+        const datosEnlaces = {
+            'C-C': { longitud: 154, energia: 347, tipo: 'Simple' },
+            'C=C': { longitud: 134, energia: 614, tipo: 'Doble' },
+            'C≡C': { longitud: 120, energia: 839, tipo: 'Triple' },
+            'C-H': { longitud: 109, energia: 413, tipo: 'Simple' },
+            'C-O': { longitud: 143, energia: 358, tipo: 'Simple' },
+            'C=O': { longitud: 120, energia: 799, tipo: 'Doble' }
+        };
+
+        // ================= NAVEGACIÓN =================
+        function showSection(sectionId, btn) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showTab(groupId, tabId, btn) {
+            const group = document.getElementById(groupId);
+            group.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            group.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // ================= MAPA CONCEPTUAL =================
+        function toggleMap(node) {
+            node.parentElement.classList.toggle('open');
+        }
+
+        // ================= FLASHCARDS =================
+        const flashcards = [
+            { q: '¿Cuál es la configuración electrónica del carbono en estado fundamental?', a: '1s² 2s² 2p² (Z = 6). Solo tiene 2 electrones desapareados.' },
+            { q: '¿Qué ocurre durante la excitación del carbono?', a: 'Un electrón 2s promociona al orbital 2p vacío: 1s² 2s¹ 2p³ → 4 electrones desapareados → valencia 4.' },
+            { q: '¿Qué proceso justifica la geometría y la igualdad de longitudes y fortalezas de enlace en el CH₄?', a: 'La hibridación: mezcla de orbitales s y p que forma orbitales híbridos equivalentes.' },
+            { q: 'Hibridación, geometría y ángulo del metano (CH₄):', a: 'sp³ • Tetraédrica • 109.5° • 4 enlaces σ • rotación libre.' },
+            { q: 'Hibridación, geometría y ángulo del etileno (C₂H₄):', a: 'sp² • Trigonal plana • 120° • 3 σ + 1 π • sin rotación.' },
+            { q: 'Hibridación, geometría y ángulo del acetileno (C₂H₂):', a: 'sp • Lineal • 180° • 2 σ + 2 π • sin rotación.' },
+            { q: '¿Cuántos orbitales p sin hibridar quedan en sp³, sp² y sp?', a: 'sp³: ninguno (0) • sp²: 1 • sp: 2.' },
+            { q: '¿Cómo se forma un enlace sigma (σ) y qué propiedades tiene?', a: 'Por superposición frontal a lo largo del eje internuclear. Es el más fuerte y permite rotación libre.' },
+            { q: '¿Cómo se forma un enlace pi (π) y qué propiedades tiene?', a: 'Por superposición lateral de orbitales p paralelos. Es más débil y bloquea la rotación (genera cis-trans).' },
+            { q: 'Ordena de MAYOR a MENOR fortaleza: C–C, C=C, C≡C', a: 'C≡C (839) > C=C (614) > C–C (347 kJ/mol).' },
+            { q: 'Ordena de MAYOR a MENOR longitud: C–C, C=C, C≡C', a: 'C–C (154 pm) > C=C (134 pm) > C≡C (120 pm).' },
+            { q: '¿Qué relación existe entre longitud y fortaleza de enlace?', a: 'Inversa: a menor longitud, mayor fortaleza (más electrones compartidos acercan los núcleos).' },
+            { q: '¿Qué enlace permite rotación libre y cuál no?', a: 'El enlace σ (simple) rota libremente; el enlace π (en dobles y triples) NO rota.' },
+            { q: '¿Qué es un heteroátomo? Da ejemplos.', a: 'Todo átomo distinto de C y H en una estructura orgánica: O, N, S, halógenos. Aportan pares libres y tienen hibridación.' },
+            { q: '¿Cuál es la hibridación del oxígeno en el agua (H₂O)?', a: 'sp³: 2 átomos enlazados + 2 pares libres = número estérico 4.' },
+            { q: '¿Cómo se calcula el número estérico y para qué sirve?', a: 'Número estérico = átomos enlazados + pares libres. 4 → sp³, 3 → sp², 2 → sp.' },
+            { q: '¿Qué es la ruptura homolítica y qué productos genera?', a: 'Ruptura simétrica: 1 electrón para cada átomo → radicales libres. Flechas de medio arpón; favorecida por luz UV/calor.' },
+            { q: '¿Qué es la ruptura heterolítica y qué productos genera?', a: 'Ruptura asimétrica: el átomo más electronegativo retiene ambos electrones → iones (catión y anión). Flecha curva completa.' },
+            { q: '¿Qué es un carbocatión y un carbanión?', a: 'Carbocatión: C con carga + (electrófilo). Carbanión: C con carga − (nucleófilo). Provienen de ruptura heterolítica.' },
+            { q: 'Diferencia entre enlace iónico y covalente según electronegatividad:', a: 'ΔEN > 1.7 → transferencia de electrones (iónico). ΔEN < 1.7 → compartición (covalente; polar si es desigual).' },
+            { q: '¿Cuántos enlaces σ y π hay en un enlace triple?', a: '1 σ + 2 π.' },
+            { q: '¿Por qué el carbono forma tantas cadenas y compuestos distintos?', a: 'Por su electronegatividad media y tetravalencia: enlaces C–C estables que forman cadenas largas (base de polímeros y biomoléculas).' },
+            { q: 'Da un ejemplo de radical libre de importancia médica y su origen.', a: 'Especies reactivas de oxígeno (•OH, O₂•⁻) por ruptura homolítica → estrés oxidativo; se neutralizan con antioxidantes.' },
+            { q: '¿Qué hibridación tienen los carbonos del benceno y cómo es su enlace π?', a: 'sp² (planos, 120°) con enlace π deslocalizado (aromaticidad) que estabiliza el anillo.' }
+        ];
+
+        let fcIndex = 0, fcFlipped = false, fcGood = 0, fcBad = 0, fcDone = false;
+
+        function fcUpdateStats() {
+            document.getElementById('fc-good').textContent = fcGood;
+            document.getElementById('fc-bad').textContent = fcBad;
+            document.getElementById('fc-left').textContent = Math.max(0, flashcards.length - fcIndex);
+            const tg = parseInt(localStorage.getItem('fcTotalGood') || '0', 10);
+            const tb = parseInt(localStorage.getItem('fcTotalBad') || '0', 10);
+            document.getElementById('fc-hist').textContent = tg + ' ✓ / ' + tb + ' ✗';
+            document.getElementById('fc-bar').style.width = (fcIndex / flashcards.length * 100) + '%';
+        }
+
+        function fcRenderCard() {
+            const card = document.getElementById('fc-card');
+            card.classList.remove('flipped');
+            fcFlipped = false;
+            document.getElementById('fc-question').textContent = flashcards[fcIndex].q;
+            document.getElementById('fc-answer').textContent = flashcards[fcIndex].a;
+            document.getElementById('btn-fc-good').disabled = true;
+            document.getElementById('btn-fc-bad').disabled = true;
+            fcUpdateStats();
+        }
+
+        function flipCard() {
+            if (fcDone) return;
+            const card = document.getElementById('fc-card');
+            card.classList.toggle('flipped');
+            fcFlipped = card.classList.contains('flipped');
+            document.getElementById('btn-fc-good').disabled = !fcFlipped;
+            document.getElementById('btn-fc-bad').disabled = !fcFlipped;
+        }
+
+        function gradeCard(wasGood) {
+            if (!fcFlipped || fcDone) return;
+            if (wasGood) {
+                fcGood++;
+                localStorage.setItem('fcTotalGood', String(parseInt(localStorage.getItem('fcTotalGood') || '0', 10) + 1));
+            } else {
+                fcBad++;
+                localStorage.setItem('fcTotalBad', String(parseInt(localStorage.getItem('fcTotalBad') || '0', 10) + 1));
+            }
+            fcIndex++;
+            if (fcIndex < flashcards.length) {
+                fcRenderCard();
+            } else {
+                fcFinish();
+            }
+        }
+
+        function fcFinish() {
+            fcDone = true;
+            document.getElementById('fc-scene').style.display = 'none';
+            document.getElementById('fc-controls').style.display = 'none';
+            const total = fcGood + fcBad;
+            const pct = Math.round(fcGood / total * 100);
+            let msg = pct >= 80 ? ' ¡Excelente! Dominas el capítulo.' : (pct >= 60 ? '💪 ¡Bien! Repasa las que fallaste.' : '📚 Necesitas repasar: vuelve a la pestaña Conceptos y al mapa.');
+            const sum = document.getElementById('fc-summary');
+            sum.innerHTML = '<strong>📊 Resumen de la sesión:</strong><br>✅ Buenas: ' + fcGood + ' &nbsp; ❌ Malas: ' + fcBad + '<br>Precisión: <strong>' + pct + '%</strong><br>' + msg;
+            sum.classList.add('show');
+            fcUpdateStats();
+        }
+
+        function resetFlashcards() {
+            fcIndex = 0; fcGood = 0; fcBad = 0; fcDone = false;
+            document.getElementById('fc-scene').style.display = 'block';
+            document.getElementById('fc-controls').style.display = 'flex';
+            document.getElementById('fc-summary').classList.remove('show');
+            fcRenderCard();
+        }
+
+        function borrarHistorial() {
+            localStorage.removeItem('fcTotalGood');
+            localStorage.removeItem('fcTotalBad');
+            fcUpdateStats();
+        }
+
+        // ================= CALCULADORA DE HIBRIDACIÓN =================
+        function calcularHibridacion() {
+            const enlaces = parseInt(document.getElementById('num-enlaces').value);
+            const pi = parseInt(document.getElementById('num-pi').value) || 0;
+            const resDiv = document.getElementById('hibridacion-resultado');
+            if (!enlaces || enlaces < 1 || enlaces > 4) {
+                resDiv.innerHTML = '<span style="color: #f44336;">⚠️ Ingresa un número válido de enlaces (1-4)</span>';
+                resDiv.classList.add('show');
+                return;
+            }
+            let hibridacion, geometria, angulo, ejemplo;
+            if (enlaces === 4 && pi === 0) { hibridacion = 'sp³'; geometria = 'Tetraédrica'; angulo = '109.5°'; ejemplo = 'CH₄ (Metano)'; }
+            else if (enlaces === 3 && pi === 1) { hibridacion = 'sp²'; geometria = 'Trigonal plana'; angulo = '120°'; ejemplo = 'C₂H₄ (Etileno)'; }
+            else if (enlaces === 2 && pi === 2) { hibridacion = 'sp'; geometria = 'Lineal'; angulo = '180°'; ejemplo = 'C₂H₂ (Acetileno)'; }
+            else { hibridacion = 'Mixta o especial'; geometria = 'Variable'; angulo = 'Variable'; ejemplo = 'Requiere análisis detallado'; }
+            resDiv.innerHTML = '<strong>Resultado:</strong><br>Hibridación: <span style="font-size: 1.5rem; color: #e94560; font-weight: bold;">' + hibridacion + '</span><br>Geometría: ' + geometria + '<br>Ángulo de enlace: ' + angulo + '<br>Ejemplo: ' + ejemplo;
+            resDiv.classList.add('show');
+        }
+
+        // ================= COMPARADOR DE ENLACES =================
+        function compararEnlaces() {
+            const enlace1 = document.getElementById('enlace1').value;
+            const enlace2 = document.getElementById('enlace2').value;
+            const resDiv = document.getElementById('comparacion-resultado');
+            const datos1 = datosEnlaces[enlace1];
+            const datos2 = datosEnlaces[enlace2];
+            const difLongitud = Math.abs(datos1.longitud - datos2.longitud);
+            const difEnergia = Math.abs(datos1.energia - datos2.energia);
+            resDiv.innerHTML = '<h3 style="margin-bottom: 1rem;">Comparación: ' + enlace1 + ' vs ' + enlace2 + '</h3>' +
+                '<div class="table-responsive"><table style="margin: 1rem 0;"><tr><th>Parámetro</th><th>' + enlace1 + '</th><th>' + enlace2 + '</th><th>Diferencia</th></tr>' +
+                '<tr><td><strong>Longitud</strong></td><td>' + datos1.longitud + ' pm</td><td>' + datos2.longitud + ' pm</td><td>' + difLongitud + ' pm</td></tr>' +
+                '<tr><td><strong>Energía</strong></td><td>' + datos1.energia + ' kJ/mol</td><td>' + datos2.energia + ' kJ/mol</td><td>' + difEnergia + ' kJ/mol</td></tr>' +
+                '<tr><td><strong>Tipo</strong></td><td>' + datos1.tipo + '</td><td>' + datos2.tipo + '</td><td>-</td></tr></table></div>' +
+                '<div class="info-box"><strong>Conclusión:</strong><br>' +
+                (datos1.longitud < datos2.longitud ?
+                    (enlace1 + ' es más corto y ' + (datos1.energia > datos2.energia ? 'más fuerte' : 'más débil') + ' que ' + enlace2) :
+                    (enlace2 + ' es más corto y ' + (datos2.energia > datos1.energia ? 'más fuerte' : 'más débil') + ' que ' + enlace1)) +
+                '</div>';
+            resDiv.classList.add('show');
+        }
+
+        // ================= VISUALIZADOR DE GEOMETRÍA =================
+        function mostrarGeometria() {
+            const tipo = document.getElementById('tipo-hibridacion').value;
+            const visualDiv = document.getElementById('geometria-visual');
+            const infoDiv = document.getElementById('geometria-info');
+            let svg, info;
+            if (tipo === 'sp3') {
+                svg = '<svg viewBox="0 0 300 300" style="max-width: 400px; width: 100%;"><circle cx="150" cy="150" r="15" fill="#16213e"/><line x1="150" y1="150" x2="150" y2="50" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="150" x2="240" y2="200" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="150" x2="60" y2="200" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="150" x2="150" y2="250" stroke="#D4AF37" stroke-width="3" stroke-dasharray="5,5"/><circle cx="150" cy="50" r="10" fill="#e94560"/><circle cx="240" cy="200" r="10" fill="#e94560"/><circle cx="60" cy="200" r="10" fill="#e94560"/><circle cx="150" cy="250" r="10" fill="#e94560" opacity="0.5"/><text x="150" y="290" text-anchor="middle" font-size="14">Tetraédrica - 109.5°</text></svg>';
+                info = '<strong>sp³:</strong> 4 orbitales híbridos equivalentes distribuidos en un tetraedro. Ejemplo: Metano (CH₄)';
+            } else if (tipo === 'sp2') {
+                svg = '<svg viewBox="0 0 300 250" style="max-width: 400px; width: 100%;"><circle cx="150" cy="125" r="15" fill="#16213e"/><line x1="150" y1="125" x2="150" y2="40" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="125" x2="230" y2="200" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="125" x2="70" y2="200" stroke="#D4AF37" stroke-width="3"/><circle cx="150" cy="40" r="10" fill="#e94560"/><circle cx="230" cy="200" r="10" fill="#e94560"/><circle cx="70" cy="200" r="10" fill="#e94560"/><text x="150" y="240" text-anchor="middle" font-size="14">Trigonal Plana - 120°</text></svg>';
+                info = '<strong>sp²:</strong> 3 orbitales híbridos en un plano + 1 orbital p perpendicular. Ejemplo: Etileno (C₂H₄)';
+            } else {
+                svg = '<svg viewBox="0 0 300 150" style="max-width: 400px; width: 100%;"><circle cx="150" cy="75" r="15" fill="#16213e"/><line x1="150" y1="75" x2="50" y2="75" stroke="#D4AF37" stroke-width="3"/><line x1="150" y1="75" x2="250" y2="75" stroke="#D4AF37" stroke-width="3"/><circle cx="50" cy="75" r="10" fill="#e94560"/><circle cx="250" cy="75" r="10" fill="#e94560"/><text x="150" y="130" text-anchor="middle" font-size="14">Lineal - 180°</text></svg>';
+                info = '<strong>sp:</strong> 2 orbitales híbridos en línea recta + 2 orbitales p perpendiculares. Ejemplo: Acetileno (C₂H₂)';
+            }
+            visualDiv.innerHTML = svg;
+            infoDiv.innerHTML = info;
+        }
+
+        // ================= GLOSARIO =================
+        function toggleDefinition(element) {
+            const definition = element.querySelector('.glossary-definition');
+            definition.classList.toggle('show');
+            element.style.background = definition.classList.contains('show') ? '#fff9e6' : 'var(--white)';
+        }
+
+        // ================= QUIZ =================
+        const quizQuestions = [
+            { question: '¿Cuál es la hibridación del carbono en el metano (CH₄)?', options: ['sp', 'sp²', 'sp³', 'sp³d'], correct: 2, explanation: 'El carbono en CH₄ tiene 4 átomos enlazados y 0 enlaces π, por lo tanto es sp³ con geometría tetraédrica.' },
+            { question: '¿Qué tipo de enlace es más fuerte?', options: ['C-C simple', 'C=C doble', 'C≡C triple', 'Todos tienen la misma fuerza'], correct: 2, explanation: 'El triple enlace C≡C tiene la mayor energía de enlace (839 kJ/mol) debido a que tiene 1 enlace σ y 2 enlaces π.' },
+            { question: '¿Cuál es el ángulo de enlace en un carbono sp²?', options: ['109.5°', '120°', '180°', '90°'], correct: 1, explanation: 'La geometría trigonal plana del carbono sp² tiene ángulos de enlace de 120°.' },
+            { question: '¿Qué enlace permite rotación libre?', options: ['Enlace simple (σ)', 'Enlace doble (σ + π)', 'Enlace triple (σ + 2π)', 'Ninguno permite rotación'], correct: 0, explanation: 'Solo el enlace sigma (σ) permite rotación libre. Los enlaces pi (π) "bloquean" la rotación.' },
+            { question: '¿Cuántos orbitales p sin hibridar tiene un carbono sp?', options: ['0', '1', '2', '3'], correct: 2, explanation: 'El carbono sp tiene 2 orbitales híbridos sp y conserva 2 orbitales p sin hibridar para formar 2 enlaces π.' },
+            { question: '¿Cuál es la longitud de enlace más corta?', options: ['C-C (154 pm)', 'C=C (134 pm)', 'C≡C (120 pm)', 'C-H (109 pm)'], correct: 3, explanation: 'El enlace C-H es el más corto (109 pm) seguido por C≡C (120 pm). A mayor fortaleza, menor longitud.' },
+            { question: 'En la molécula de etileno (C₂H₄), ¿cuál es la hibridación de los carbonos?', options: ['sp', 'sp²', 'sp³', 'sp³d'], correct: 1, explanation: 'Cada carbono en C₂H₄ tiene 3 átomos enlazados (2H + 1C) y 1 enlace π (el doble enlace), por lo tanto es sp².' },
+            { question: '¿Qué ocurre durante la excitación del carbono?', options: ['Un electrón 2s salta a 2p', 'Un electrón 2p salta a 2s', 'Se pierden electrones', 'Se ganan electrones'], correct: 0, explanation: 'En la excitación, un electrón del orbital 2s promociona al orbital 2p vacío, permitiendo tener 4 electrones desapareados.' },
+            { question: '¿Qué tipo de ruptura genera radicales libres?', options: ['Heterolítica', 'Homolítica', 'Ionización', 'Ninguna'], correct: 1, explanation: 'La ruptura homolítica reparte 1 electrón a cada átomo, generando radicales libres (especies con electrón desapareado).' },
+            { question: 'En la ruptura heterolítica de H–Cl, ¿qué productos se forman?', options: ['H• y Cl•', 'H⁺ y Cl⁻', 'H⁻ y Cl⁺', 'H₂ y Cl₂'], correct: 1, explanation: 'El Cl (más electronegativo) retiene el par de electrones: se forman H⁺ (catión) y Cl⁻ (anión).' }
+        ];
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            quizQuestions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-container';
+                div.style.marginBottom = '2rem';
+                div.innerHTML = '<div class="quiz-question">' + (index + 1) + '. ' + q.question + '</div>' +
+                    '<div class="quiz-options">' + q.options.map((opt, i) =>
+                        '<button class="quiz-option" onclick="checkAnswer(' + index + ', ' + i + ', this)">' + opt + '</button>').join('') + '</div>' +
+                    '<div class="quiz-feedback" id="feedback-' + index + '" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>';
+                container.appendChild(div);
+            });
+        }
+
+        function checkAnswer(qIdx, sIdx, btn) {
+            const q = quizQuestions[qIdx];
+            const fb = document.getElementById('feedback-' + qIdx);
+            const opts = btn.parentElement.querySelectorAll('.quiz-option');
+            opts.forEach(o => o.disabled = true);
+            if (sIdx === q.correct) {
+                btn.classList.add('correct');
+                fb.innerHTML = '<span style="color: #4caf50; font-weight: bold;">✅ ¡Correcto!</span><br>' + q.explanation;
+                fb.style.background = '#e8f5e9';
+            } else {
+                btn.classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+                fb.innerHTML = '<span style="color: #f44336; font-weight: bold;">❌ Incorrecto</span><br>' + q.explanation;
+                fb.style.background = '#ffebee';
+            }
+            fb.style.display = 'block';
+        }
+
+        function reiniciarQuiz() { loadQuiz(); }
+
+        // ================= INICIALIZACIÓN =================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuiz();
+            mostrarGeometria();
+            fcRenderCard();
+        });
+    </script>
+</body>
+</html>
