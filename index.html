@@ -942,6 +942,7 @@
             document.getElementById(sectionId).classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             if (btn) btn.classList.add('active');
+            if (sectionId === 'quiz') loadQuiz(); // 🎲 nuevo sorteo de 10 preguntas cada vez que entra
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
