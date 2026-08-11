@@ -18,6 +18,20 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* ===== SANGRÍA DE VIÑETAS Y LISTAS ===== */
+        ul:not(.map-tree), ol {
+            padding-left: 2.4rem;
+            margin: 0.5rem 0 1rem;
+        }
+        ul:not(.map-tree) { list-style: none; } /* evita doble marcador (ya usas • y ✓ a mano) */
+        ul:not(.map-tree) li, ol li { margin: 0.45rem 0; }
+        
+        /* ===== BARRA DE PROGRESO DEL QUIZ ===== */
+        .quiz-progress {
+            background: var(--upch-blue); color: #fff; border-left: 5px solid var(--upch-gold);
+            padding: 1rem 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; font-size: 1.05rem;
+        }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -337,12 +351,14 @@
 
                         <h3>Hibridación sp³ (Carbono Tetraédrico)</h3>
                         <div class="info-box">
-                            <strong>Características:</strong><br>
-                            • 4 orbitales híbridos sp³ equivalentes<br>
-                            • Geometría: Tetraédrica (109.5°)<br>
-                            • 4 enlaces sigma (σ) • Enlazado a 4 átomos<br>
-                            • Rotación libre alrededor del enlace<br>
-                            • Ejemplo: Metano (CH₄), Etano (C₂H₆)
+                            <strong>Características:</strong>
+                            <ul>
+                                <li>• 4 orbitales híbridos sp³ equivalentes</li>
+                                <li>• Geometría: Tetraédrica (109.5°)</li>
+                                <li>• 4 enlaces sigma (σ) • Enlazado a 4 átomos</li>
+                                <li>• Rotación libre alrededor del enlace</li>
+                                <li>• Ejemplo: Metano (CH₄), Etano (C₂H₆)</li>
+                            </ul>
                         </div>
                         <div class="img-container">
                             <img src="orbitales-sp3.png" alt="Hibridación sp3 - Metano" class="molecule-img">
@@ -352,11 +368,13 @@
                         <h3>Hibridación sp² (Carbono Trigonal)</h3>
                         <div class="info-box">
                             <strong>Características:</strong><br>
-                            • 3 orbitales híbridos sp² + 1 orbital p sin hibridar<br>
-                            • Geometría: Trigonal plana (120°)<br>
-                            • 3 enlaces sigma (σ) + 1 enlace pi (π) • Enlazado a 3 átomos<br>
-                            • Sin rotación (doble enlace)<br>
-                            • Ejemplo: Etileno (C₂H₄), Benceno (C₆H₆)
+                            <ul>
+                                <li>• 3 orbitales híbridos sp² + 1 orbital p sin hibridar</li>
+                                <li>• Geometría: Trigonal plana (120°)</li>
+                                <li>• 3 enlaces sigma (σ) + 1 enlace pi (π) • Enlazado a 3 átomos</li>
+                                <li>• Sin rotación (doble enlace)</li>
+                                <li>• Ejemplo: Etileno (C₂H₄), Benceno (C₆H₆)</li>
+                            </ul>
                         </div>
                         <div class="img-container">
                             <img src="orbitales-sp2.png" alt="Hibridación sp2 - Etileno" class="molecule-img">
@@ -365,12 +383,14 @@
 
                         <h3>Hibridación sp (Carbono Lineal)</h3>
                         <div class="info-box">
-                            <strong>Características:</strong><br>
-                            • 2 orbitales híbridos sp + 2 orbitales p sin hibridar<br>
-                            • Geometría: Lineal (180°)<br>
-                            • 2 enlaces sigma (σ) + 2 enlaces pi (π) • Enlazado a 2 átomos<br>
-                            • Sin rotación (triple enlace)<br>
-                            • Ejemplo: Acetileno (C₂H₂)
+                            <strong>Características:</strong>
+                            <ul>
+                                <li>• 2 orbitales híbridos sp + 2 orbitales p sin hibridar</li>
+                                <li>• Geometría: Lineal (180°)</li>
+                                <li>• 2 enlaces sigma (σ) + 2 enlaces pi (π) • Enlazado a 2 átomos</li>
+                                <li>• Sin rotación (triple enlace)</li>
+                                <li>• Ejemplo: Acetileno (C₂H₂)</li>
+                            </ul>
                         </div>
                         <div class="img-container">
                             <img src="orbitales-sp.png" alt="Hibridación sp - Acetileno" class="molecule-img">
@@ -402,10 +422,12 @@
                         </div>
 
                         <div class="info-box">
-                            <strong>Fortaleza de enlace:</strong><br>
-                            • Enlace σ &gt; Enlace π<br>
-                            • Triple enlace &gt; Doble enlace &gt; Enlace simple<br>
-                            • Ejemplo: C≡C (839 kJ/mol) &gt; C=C (614 kJ/mol) &gt; C-C (347 kJ/mol)
+                            <strong>Fortaleza de enlace:</strong>
+                            <ul>
+                            <li></>• Enlace σ &gt; Enlace πli
+                            <li></>• Triple enlace &gt; Doble enlace &gt; Enlace simpleli
+                            <li>• Ejemplo: C≡C (839 kJ/mol) &gt; C=C (614 kJ/mol) &gt; C-C (347 kJ/mol)</li>
+                            </ul>
                         </div>
 
                         <h3>Longitud de Enlace</h3>
@@ -421,10 +443,12 @@
 
                         <div class="tip-box">
                             <strong>Regla importante:</strong><br>
-                            A mayor número de enlaces entre dos átomos:<br>
-                            ✓ Mayor fortaleza del enlace<br>
-                            ✓ Menor longitud de enlace<br>
-                            ✓ Menor rotación posible
+                            A mayor número de enlaces entre dos átomos:
+                            <ul>
+                                <li>✓ Mayor fortaleza del enlace<br></li>
+                                <li>✓ Menor longitud de enlace</li>
+                                <li>✓ Menor rotación posible</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -440,20 +464,24 @@
 
                         <h3>Ruptura Homolítica (→ Radicales libres)</h3>
                         <div class="info-box">
-                            • El par de electrones se divide <strong>equitativamente</strong>: un electrón para cada átomo.<br>
-                            • Se representa con <strong>flechas de medio arpón</strong> (fishhook, media punta).<br>
-                            • Genera <strong>radicales libres</strong>: especies con un electrón desapareado, muy reactivas (A• y B•).<br>
-                            • Favorecida por <strong>luz UV, calor o peróxidos</strong> (iniciadores radicalarios).<br>
-                            • Ejemplo: Cl₂ → 2 Cl• &nbsp;|&nbsp; En el organismo: especies reactivas de oxígeno como •OH y O₂•⁻
+                            <ul>
+                                <li>• El par de electrones se divide <strong>equitativamente</strong>: un electrón para cada átomo.</li>
+                                <li>• Se representa con <strong>flechas de medio arpón</strong> (fishhook, media punta).</li>
+                                <li>• Genera <strong>radicales libres</strong>: especies con un electrón desapareado, muy reactivas (A• y B•).</li>
+                                <li>• Favorecida por <strong>luz UV, calor o peróxidos</strong> (iniciadores radicalarios).</li>
+                                <li>• Ejemplo: Cl₂ → 2 Cl• &nbsp;|&nbsp; En el organismo: especies reactivas de oxígeno como •OH y O₂•</li>
+                            </ul>
                         </div>
 
                         <h3>Ruptura Heterolítica (→ Iones)</h3>
                         <div class="pharma-box">
-                            • El par de electrones queda <strong>retenido por el átomo más electronegativo</strong>.<br>
-                            • Se representa con <strong>flechas curvas de arpón completo</strong> (punta entera).<br>
-                            • Genera <strong>iones</strong>: un <strong>catión</strong> (si el carbono pierde el par: <strong>carbocatión</strong>, electrófilo) y un <strong>anión</strong> (si el carbono lo retiene: <strong>carbanión</strong>, nucleófilo).<br>
-                            • Favorecida por diferencias de electronegatividad y <strong>solventes polares</strong> como el agua.<br>
-                            • Ejemplo: H–Cl → H⁺ + Cl⁻ &nbsp;|&nbsp; Ionización de fármacos ácidos/básicos en el plasma.
+                            <ul>
+                                <li>• El par de electrones queda <strong>retenido por el átomo más electronegativo</strong>.</li>
+                                <li>• Se representa con <strong>flechas curvas de arpón completo</strong> (punta entera).</li>
+                                <li>• Genera <strong>iones</strong>: un <strong>catión</strong> (si el carbono pierde el par: <strong>carbocatión</strong>, electrófilo) y un <strong>anión</strong> (si el carbono lo retiene: <strong>carbanión</strong>, nucleófilo).</li>
+                                <li>• Favorecida por diferencias de electronegatividad y <strong>solventes polares</strong> como el agua.</li>
+                                <li>• Ejemplo: H–Cl → H⁺ + Cl⁻ &nbsp;|&nbsp; Ionización de fármacos ácidos/básicos en el plasma.</li>
+                            </ul>
                         </div>
 
                         <h3>Comparación</h3>
@@ -847,7 +875,13 @@
                 <div class="error-card"><div class="error-title">❌ Error 5: No considerar pares libres en heteroátomos</div><p><strong>Error:</strong> Calcular hibridación solo con átomos enlazados</p><div class="correction"><strong>✓ Corrección:</strong> Los pares libres de electrones también ocupan orbitales híbridos. Ejemplo: En H₂O, el oxígeno tiene 2 átomos enlazados + 2 pares libres = 4 → sp³</div></div>
                 <div class="error-card"><div class="error-title">❌ Error 6: Pensar que la excitación es opcional</div><p><strong>Error:</strong> "El carbono puede formar 4 enlaces sin excitarse"</p><div class="correction"><strong>✓ Corrección:</strong> La excitación es necesaria para que el carbono tenga 4 electrones desapareados. Sin excitación, solo tendría 2 (configuración 2s² 2p²).</div></div>
                 <div class="error-card"><div class="error-title">❌ Error 7: Confundir las flechas de ruptura</div><p><strong>Error:</strong> Usar flecha completa para radicales o medio arpón para iones</p><div class="correction"><strong>✓ Corrección:</strong> Homolítica = flechas de medio arpón (1 e⁻ cada una) → radicales. Heterolítica = flecha curva completa (par de e⁻) → iones.</div></div>
-                <div class="tip-box" style="margin-top: 2rem;"><strong>💡 Consejo de Estudio:</strong><br>Practica identificando la hibridación en moléculas complejas. Empieza por contar:<br>1. Átomos enlazados al carbono<br>2. Enlaces π presentes<br>3. Pares libres (si es heteroátomo)<br>¡La práctica hace al maestro!</div>
+                <div class="tip-box" style="margin-top: 2rem;"><strong>💡 Consejo de Estudio:</strong><br>Practica identificando la hibridación en moléculas complejas. Empieza por contar:<br>
+                    <ol>
+                        <li>Átomos enlazados al carbono</li>
+                        <li>Enlaces π presentes</li>
+                        <li>Pares libres (si es heteroátomo)</li>
+                    </ol>
+                    ¡La práctica hace al maestro!</div>
             </div>
         </section>
 
@@ -874,7 +908,8 @@
         <section id="quiz" class="section">
             <div class="card">
                 <h2>🎯 Quiz de Autoevaluación</h2>
-                <p>Pon a prueba tus conocimientos. Selecciona la respuesta correcta:</p>
+                <p>Pon a prueba tus conocimientos: en cada ciclo se muestran <strong>10 preguntas al azar</strong> de una base de 30.</p>
+                <p id="quiz-historial" style="margin: .5rem 0 1rem; font-weight: 600; color: var(--upch-light);"></p>
                 <div id="quiz-container"></div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <button class="calc-button" onclick="reiniciarQuiz()">🔄 Reiniciar Quiz</button>
@@ -1095,24 +1130,65 @@
             element.style.background = definition.classList.contains('show') ? '#fff9e6' : 'var(--white)';
         }
 
-        // ================= QUIZ =================
+        // ================= QUIZ (30 preguntas · ciclos de 10) =================
         const quizQuestions = [
             { question: '¿Cuál es la hibridación del carbono en el metano (CH₄)?', options: ['sp', 'sp²', 'sp³', 'sp³d'], correct: 2, explanation: 'El carbono en CH₄ tiene 4 átomos enlazados y 0 enlaces π, por lo tanto es sp³ con geometría tetraédrica.' },
-            { question: '¿Qué tipo de enlace es más fuerte?', options: ['C-C simple', 'C=C doble', 'C≡C triple', 'Todos tienen la misma fuerza'], correct: 2, explanation: 'El triple enlace C≡C tiene la mayor energía de enlace (839 kJ/mol) debido a que tiene 1 enlace σ y 2 enlaces π.' },
-            { question: '¿Cuál es el ángulo de enlace en un carbono sp²?', options: ['109.5°', '120°', '180°', '90°'], correct: 1, explanation: 'La geometría trigonal plana del carbono sp² tiene ángulos de enlace de 120°.' },
-            { question: '¿Qué enlace permite rotación libre?', options: ['Enlace simple (σ)', 'Enlace doble (σ + π)', 'Enlace triple (σ + 2π)', 'Ninguno permite rotación'], correct: 0, explanation: 'Solo el enlace sigma (σ) permite rotación libre. Los enlaces pi (π) "bloquean" la rotación.' },
-            { question: '¿Cuántos orbitales p sin hibridar tiene un carbono sp?', options: ['0', '1', '2', '3'], correct: 2, explanation: 'El carbono sp tiene 2 orbitales híbridos sp y conserva 2 orbitales p sin hibridar para formar 2 enlaces π.' },
-            { question: '¿Cuál es la longitud de enlace más corta?', options: ['C-C (154 pm)', 'C=C (134 pm)', 'C≡C (120 pm)', 'C-H (109 pm)'], correct: 3, explanation: 'El enlace C-H es el más corto (109 pm) seguido por C≡C (120 pm). A mayor fortaleza, menor longitud.' },
-            { question: 'En la molécula de etileno (C₂H₄), ¿cuál es la hibridación de los carbonos?', options: ['sp', 'sp²', 'sp³', 'sp³d'], correct: 1, explanation: 'Cada carbono en C₂H₄ tiene 3 átomos enlazados (2H + 1C) y 1 enlace π (el doble enlace), por lo tanto es sp².' },
-            { question: '¿Qué ocurre durante la excitación del carbono?', options: ['Un electrón 2s salta a 2p', 'Un electrón 2p salta a 2s', 'Se pierden electrones', 'Se ganan electrones'], correct: 0, explanation: 'En la excitación, un electrón del orbital 2s promociona al orbital 2p vacío, permitiendo tener 4 electrones desapareados.' },
-            { question: '¿Qué tipo de ruptura genera radicales libres?', options: ['Heterolítica', 'Homolítica', 'Ionización', 'Ninguna'], correct: 1, explanation: 'La ruptura homolítica reparte 1 electrón a cada átomo, generando radicales libres (especies con electrón desapareado).' },
-            { question: 'En la ruptura heterolítica de H–Cl, ¿qué productos se forman?', options: ['H• y Cl•', 'H⁺ y Cl⁻', 'H⁻ y Cl⁺', 'H₂ y Cl₂'], correct: 1, explanation: 'El Cl (más electronegativo) retiene el par de electrones: se forman H⁺ (catión) y Cl⁻ (anión).' }
+            { question: '¿Qué tipo de enlace es más fuerte?', options: ['C-C simple', 'C=C doble', 'C≡C triple', 'Todos tienen la misma fuerza'], correct: 2, explanation: 'El triple enlace C≡C tiene la mayor energía de enlace (839 kJ/mol): 1 σ + 2 π.' },
+            { question: '¿Cuál es el ángulo de enlace en un carbono sp²?', options: ['109.5°', '120°', '180°', '90°'], correct: 1, explanation: 'La geometría trigonal plana del carbono sp² tiene ángulos de 120°.' },
+            { question: '¿Qué enlace permite rotación libre?', options: ['Enlace simple (σ)', 'Enlace doble (σ + π)', 'Enlace triple (σ + 2π)', 'Ninguno permite rotación'], correct: 0, explanation: 'Solo el enlace sigma (σ) permite rotación libre; los π bloquean la rotación.' },
+            { question: '¿Cuántos orbitales p sin hibridar tiene un carbono sp?', options: ['0', '1', '2', '3'], correct: 2, explanation: 'El carbono sp conserva 2 orbitales p sin hibridar para formar 2 enlaces π.' },
+            { question: '¿Cuál es la longitud de enlace más corta?', options: ['C-C (154 pm)', 'C=C (134 pm)', 'C≡C (120 pm)', 'C-H (109 pm)', ], correct: 3, explanation: 'El enlace C-H es el más corto (109 pm), seguido por C≡C (120 pm). A mayor fortaleza, menor longitud.' },
+            { question: 'En la molécula de etileno (C₂H₄), ¿cuál es la hibridación de los carbonos?', options: ['sp', 'sp²', 'sp³', 'sp³d'], correct: 1, explanation: 'Cada carbono tiene 3 átomos enlazados y 1 enlace π → sp².' },
+            { question: '¿Qué ocurre durante la excitación del carbono?', options: ['Un electrón 2s salta a 2p', 'Un electrón 2p salta a 2s', 'Se pierden electrones', 'Se ganan electrones'], correct: 0, explanation: 'Un electrón 2s promociona al 2p vacío: 4 electrones desapareados → valencia 4.' },
+            { question: '¿Qué tipo de ruptura genera radicales libres?', options: ['Heterolítica', 'Homolítica', 'Ionización', 'Ninguna'], correct: 1, explanation: 'La ruptura homolítica reparte 1 electrón a cada átomo → radicales libres.' },
+            { question: 'En la ruptura heterolítica de H–Cl, ¿qué productos se forman?', options: ['H• y Cl•', 'H⁺ y Cl⁻', 'H⁻ y Cl⁺', 'H₂ y Cl₂'], correct: 1, explanation: 'El Cl (más electronegativo) retiene el par: H⁺ (catión) y Cl⁻ (anión).' },
+            { question: '¿Cuál es la configuración electrónica del carbono en estado fundamental?', options: ['1s² 2s² 2p²', '1s² 2s¹ 2p³', '1s² 2p⁴', '1s² 2s² 2p¹'], correct: 0, explanation: 'En estado fundamental es 1s² 2s² 2p²; la configuración 1s² 2s¹ 2p³ corresponde al estado excitado.' },
+            { question: '¿Cuántos electrones desapareados tiene el carbono en estado excitado?', options: ['2', '3', '4', '0'], correct: 2, explanation: 'Al promocionar un electrón 2s a 2p queda con 4 electrones desapareados → valencia 4 (CH₄, CCl₄).' },
+            { question: '¿Qué proceso justifica la geometría y la igualdad de longitudes y fortalezas de los 4 enlaces C–H del metano?', options: ['Excitación', 'Hibridación', 'Resonancia', 'Ionización'], correct: 1, explanation: 'La hibridación sp³ genera 4 orbitales equivalentes: geometría tetraédrica y enlaces idénticos.' },
+            { question: 'Un enlace doble (C=C) está formado por:', options: ['2 enlaces σ', '1 σ + 1 π', '2 enlaces π', '1 σ + 2 π'], correct: 1, explanation: 'Doble enlace = 1 sigma (frontal) + 1 pi (lateral).' },
+            { question: 'Un enlace triple (C≡C) está formado por:', options: ['1 σ + 2 π', '3 σ', '2 σ + 1 π', '3 π'], correct: 0, explanation: 'Triple enlace = 1 sigma + 2 pi, con 2 orbitales p sin hibridar.' },
+            { question: 'Geometría y ángulo de un carbono sp³:', options: ['Trigonal plana, 120°', 'Tetraédrica, 109.5°', 'Lineal, 180°', 'Angular, 104.5°'], correct: 1, explanation: 'sp³ → tetraédrica con ángulos de 109.5° (CH₄).' },
+            { question: 'Geometría de un carbono sp:', options: ['Lineal (180°)', 'Tetraédrica (109.5°)', 'Trigonal plana (120°)', 'Piramidal'], correct: 0, explanation: 'sp → 2 orbitales híbridos opuestos → lineal, como en el acetileno.' },
+            { question: '¿Cuál es la longitud aproximada del enlace C≡C?', options: ['154 pm', '134 pm', '120 pm', '109 pm'], correct: 2, explanation: 'C≡C = 120 pm: el más corto de la serie C–C.' },
+            { question: 'Energía aproximada del enlace simple C–C:', options: ['839 kJ/mol', '614 kJ/mol', '347 kJ/mol', '413 kJ/mol'], correct: 2, explanation: 'C–C ≈ 347 kJ/mol; C=C ≈ 614 y C≡C ≈ 839 kJ/mol.' },
+            { question: 'Relación entre longitud y fortaleza de enlace:', options: ['Directa: más largo, más fuerte', 'Inversa: más corto, más fuerte', 'No existe relación', 'Depende solo de la masa'], correct: 1, explanation: 'A mayor orden de enlace, los núcleos están más cerca y el enlace es más fuerte.' },
+            { question: 'La ruptura homolítica se representa con:', options: ['Flecha curva completa', 'Flechas de medio arpón (media punta)', 'Flechas rectas dobles', 'No se representa'], correct: 1, explanation: 'Cada electrón se va con un átomo: se dibujan dos flechas de medio arpón.' },
+            { question: 'En una ruptura heterolítica, si el carbono retiene el par de electrones se forma:', options: ['Carbocatión', 'Carbanión', 'Radical libre', 'Isómero'], correct: 1, explanation: 'El carbono con el par completo queda negativo: carbanión (nucleófilo).' },
+            { question: 'Un carbocatión es un carbono con carga ___ y comportamiento ___:', options: ['negativa / nucleófilo', 'positiva / electrófilo', 'positiva / nucleófilo', 'neutra / inerte'], correct: 1, explanation: 'Pierde el par del enlace → C⁺ electrófilo.' },
+            { question: '¿Cuál de estos átomos es un heteroátomo en una molécula orgánica?', options: ['Hidrógeno', 'Carbono', 'Nitrógeno', 'Ninguno'], correct: 2, explanation: 'Heteroátomo = todo átomo distinto de C y H: O, N, S, halógenos.' },
+            { question: 'Hibridación del oxígeno en el agua (H₂O):', options: ['sp', 'sp²', 'sp³', 'sin hibridación'], correct: 2, explanation: '2 enlaces + 2 pares libres = número estérico 4 → sp³ (geometría angular).' },
+            { question: 'El número estérico se calcula como:', options: ['Enlaces π + pares libres', 'Átomos enlazados + pares libres', 'Protones + neutrones', 'Electrones de valencia ÷ 2'], correct: 1, explanation: '4 → sp³, 3 → sp², 2 → sp.' },
+            { question: 'Si la diferencia de electronegatividad (ΔEN) es mayor a 1.7, el enlace tiende a ser:', options: ['Covalente no polar', 'Iónico', 'Metálico', 'Puente de hidrógeno'], correct: 1, explanation: 'ΔEN > 1.7 → transferencia de electrones (iónico, NaCl); < 1.7 → covalente.' },
+            { question: '¿Por qué NO rota el doble enlace C=C?', options: ['Porque es demasiado corto', 'Porque se rompería la superposición lateral del enlace π', 'Porque los hidrógenos lo impiden', 'Sí rota libremente'], correct: 1, explanation: 'La rotación destruiría el solapamiento lateral de los orbitales p; por eso existen isómeros cis/trans.' },
+            { question: 'Hibridación de los carbonos del benceno y característica de su π:', options: ['sp³, π localizado', 'sp², π deslocalizado (aromaticidad)', 'sp, π deslocalizado', 'sp², sin π'], correct: 1, explanation: 'Los 6 carbonos sp² planos aportan un π deslocalizado que estabiliza el anillo.' },
+            { question: 'Hibridación del carbono del formaldehído (H₂C=O):', options: ['sp³', 'sp²', 'sp', 'sp³d'], correct: 1, explanation: '3 enlaces σ + 1 π (C=O) → número estérico 3 → sp², trigonal plano.' }
         ];
-
+        
+        let quizSet = [];
+        let quizAnswered = 0;
+        let quizScore = 0;
+        let quizLastIds = [];
+        
+        function barajar(arr) {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        
         function loadQuiz() {
+            let sel;
+            do { sel = barajar(quizQuestions).slice(0, 10); }
+            while (sel.map(q => q.question).join('|') === quizLastIds.join('|')); // evita repetir el mismo ciclo
+            quizLastIds = sel.map(q => q.question);
+            quizSet = sel;
+            quizAnswered = 0;
+            quizScore = 0;
             const container = document.getElementById('quiz-container');
-            container.innerHTML = '';
-            quizQuestions.forEach((q, index) => {
+            container.innerHTML = '<div class="quiz-progress" id="quiz-progress"></div>';
+            quizSet.forEach((q, index) => {
                 const div = document.createElement('div');
                 div.className = 'quiz-container';
                 div.style.marginBottom = '2rem';
@@ -1122,14 +1198,32 @@
                     '<div class="quiz-feedback" id="feedback-' + index + '" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>';
                 container.appendChild(div);
             });
+            actualizarProgresoQuiz();
+            mostrarHistorialQuiz();
         }
-
+        
+        function actualizarProgresoQuiz() {
+            const p = document.getElementById('quiz-progress');
+            if (p) p.innerHTML = '📊 Progreso del ciclo: <strong>' + quizAnswered + '/' + quizSet.length +
+                '</strong> respondidas · ✅ Aciertos: <strong>' + quizScore + '</strong>';
+        }
+        
+        function mostrarHistorialQuiz() {
+            const h = document.getElementById('quiz-historial');
+            if (!h) return;
+            h.innerHTML = '🕘 Último ciclo: ' + (localStorage.getItem('quizUltimo') || '—') +
+                ' · 🏆 Mejor puntaje: ' + (localStorage.getItem('quizMejor') || '—');
+        }
+        
         function checkAnswer(qIdx, sIdx, btn) {
-            const q = quizQuestions[qIdx];
+            if (btn.disabled) return;
+            const q = quizSet[qIdx];
             const fb = document.getElementById('feedback-' + qIdx);
             const opts = btn.parentElement.querySelectorAll('.quiz-option');
             opts.forEach(o => o.disabled = true);
+            quizAnswered++;
             if (sIdx === q.correct) {
+                quizScore++;
                 btn.classList.add('correct');
                 fb.innerHTML = '<span style="color: #4caf50; font-weight: bold;">✅ ¡Correcto!</span><br>' + q.explanation;
                 fb.style.background = '#e8f5e9';
@@ -1140,10 +1234,38 @@
                 fb.style.background = '#ffebee';
             }
             fb.style.display = 'block';
+            actualizarProgresoQuiz();
+            if (quizAnswered === quizSet.length) finalizarQuiz();
         }
-
-        function reiniciarQuiz() { loadQuiz(); }
-
+        
+        function finalizarQuiz() {
+            const pct = Math.round((quizScore / quizSet.length) * 100);
+            let msg;
+            if (pct >= 90) msg = '🏅 ¡Nivel excelencia! Dominas la estructura molecular.';
+            else if (pct >= 70) msg = '💪 ¡Muy bien! Estás listo para la práctica calificada.';
+            else if (pct >= 50) msg = '📖 Buen intento: repasa Conceptos y el Mapa Conceptual antes del siguiente ciclo.';
+            else msg = '🔄 Vuelve a las Flashcards y al Mapa Conceptual; luego intenta un nuevo ciclo.';
+            localStorage.setItem('quizUltimo', quizScore + '/' + quizSet.length + ' (' + pct + '%)');
+            const mejor = parseInt(localStorage.getItem('quizMejorNum') || '0', 10);
+            if (pct > mejor) {
+                localStorage.setItem('quizMejorNum', String(pct));
+                localStorage.setItem('quizMejor', quizScore + '/' + quizSet.length + ' (' + pct + '%)');
+            }
+            const container = document.getElementById('quiz-container');
+            container.insertAdjacentHTML('beforeend',
+                '<div class="calc-result show" style="margin-top:1.5rem; text-align:center;">' +
+                '<h3 style="margin-bottom:.5rem;">🏁 Resultados del ciclo</h3>' +
+                'Aciertos: <strong>' + quizScore + ' / ' + quizSet.length + '</strong> · Porcentaje: <strong>' + pct + '%</strong><br>' + msg +
+                '<br><button class="calc-button" style="margin-top:1rem;" onclick="reiniciarQuiz()">🎲 Nuevo ciclo con otras 10 preguntas</button></div>');
+            mostrarHistorialQuiz();
+            container.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function reiniciarQuiz() {
+            loadQuiz();
+            document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+        
         // ================= INICIALIZACIÓN =================
         document.addEventListener('DOMContentLoaded', () => {
             loadQuiz();
